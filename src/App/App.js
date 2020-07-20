@@ -1,15 +1,11 @@
 import React, { Component } from "react";
 import "./globsl-style.scss";
-import Button from "./button/Button";
+import Board from '../pages/Board/Board';
 
 class App extends Component {
   render() {
-    console.log();
     return (
-      <div>
-        <Button label="click me please" />
-        <h1>My React App!</h1>
-      </div>
+      <Board />
     );
   }
 }

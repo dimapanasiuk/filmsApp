@@ -1,12 +1,14 @@
-import React from "react"
+import React from "./node_modules/react";
 // import './button.css';
 
-const Button = ({ label }) => {
+const Button = (props) => {
+  console.log(props);
   return (
     <div data-testId="button" className="button-style">
-      {label}
+      {props}
     </div>
   );
 };
 
 export default Button;
+
