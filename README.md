@@ -1,1 +1,1 @@
-# filmsApp
+# react-boilerplate
