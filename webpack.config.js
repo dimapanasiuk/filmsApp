@@ -1,5 +1,5 @@
-const path = require("path")
-const HtmlWebpackPlugin = require("html-webpack-plugin")
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.js",
@@ -13,11 +13,13 @@ module.exports = {
         test: /\.(js|jsx)?$/,
         exclude: /node_modules/,
         use: ["babel-loader"],
+        options: {
+          presets: ['@babel/preset-env',
+            '@babel/react', {
+              'plugins': ['@babel/plugin-proposal-class-properties']
+            }]
+        }
       },
-      // {
-      //   test: /\.css$/,
-      //   use: ["style-loader", "css-loader"]
-      // },
       {
         test: /\.(css|s[ac]ss)$/i,
         use: [
@@ -43,4 +45,4 @@ module.exports = {
       template: "./src/index.html",
     }),
   ],
-}
+};
