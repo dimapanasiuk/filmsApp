@@ -7,6 +7,8 @@ import Search from '../Search/Search';
 import Home from '../Home/Home';
 import AboutFilm from '../AboutFilm/AboutFilm';
 
+import Card from '../../components/Card/Card';
+
 class Board extends React.Component {
   constructor(props) {
     super(props);
@@ -37,6 +39,14 @@ class Board extends React.Component {
     return (
       <>
         <Header />
+        <Card
+          title='test'
+          // posterUrl=''
+          // bigPosterUrl=''
+          // director=''
+          // description=''
+        />
+
         <Switch>
           <Route exact path="/search">
             <Search />
