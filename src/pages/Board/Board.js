@@ -10,24 +10,26 @@ import AboutFilm from '../AboutFilm/AboutFilm';
 class Board extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {date: new Date()};
+    this.state = { date: new Date() };
   }
 
-  state = {}
+  state = {
+    response: [],
+  }
 
-  // componentDidMount = () => {
-  //   fetch("https://filmsapi.herokuapp.com/films").then(response =>
-  //     response
-  //       .json()
-  //       .then(data => {
-  //         this.setState({
-  //           response: data.message
-  //         });
-  //       })
-  //       .catch(console.error)
-  //   );
-  //   return null;
-  // };
+  componentDidMount = () => {
+    fetch("https://filmsapi.herokuapp.com/films").then(response =>
+      response
+        .json()
+        .then(data => {
+          this.setState({
+            response: data.message
+          });
+        })
+        .catch(console.error)
+    );
+    return null;
+  };
 
 
   render() {
