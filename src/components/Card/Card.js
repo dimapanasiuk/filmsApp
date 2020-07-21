@@ -1,10 +1,10 @@
 import React from 'react';
 import { string, func, arrayOf, number } from 'prop-types';
-
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 import { clickOnFilm } from '../../redux/filmData/filmDataActions';
 
-import { Link } from 'react-router-dom';
 import { arrParse } from '../../utils/utils';
 import './card.scss';
 

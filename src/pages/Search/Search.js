@@ -8,13 +8,10 @@ import Card from '../../components/Card/Card';
 
 class Search extends React.Component {
 
-
-  searchMovieByKeyword(category, films) {
+  searchMovieByKeyword(searchWord, films) {
     const arr = films.filter(i => {
-      let num = i.title.indexOf(category);
-      if (num >= 0) {
-        return i;
-      }
+      let num = i.title.toUpperCase().indexOf(searchWord.toUpperCase());
+      return num >= 0;
     });
 
     return arr.map(i => <Card
@@ -38,10 +35,9 @@ class Search extends React.Component {
 
     return (
       <>
-      {this.searchMovieByKeyword(searchData, films)}
+        {this.searchMovieByKeyword(searchData, films)}
       </>
     );
-    // return <h1>{searchMovieByKeyword(searchData, films)}</h1>;
   }
 }
 

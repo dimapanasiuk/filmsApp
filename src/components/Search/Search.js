@@ -1,12 +1,13 @@
 import React from "react";
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
+import { func } from 'prop-types';
 
-import {searchFilm} from '../../redux/searchData/searchDataActions';
+import { searchFilm } from '../../redux/searchData/searchDataActions';
 
 class Search extends React.Component {
 
-  clickHandlerSearch  = (e) => {
+  clickHandlerSearch = (e) => {
     const searchData = e.target.previousElementSibling.value;
     this.props.dispatch(searchFilm(searchData));
   }
@@ -23,6 +24,10 @@ class Search extends React.Component {
   }
 }
 
+
+Search.propTypes = {
+  dispatch: func
+};
 
 const mapStateToProps = (state) => {
   console.log(state);
