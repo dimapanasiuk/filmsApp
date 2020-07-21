@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { arrayOf, object, string } from 'prop-types';
 
 import Card from '../../components/Card/Card';
-// import {searchMovieByKeyword} from '../../utils/utils';
 
 class Search extends React.Component {
 
@@ -32,8 +31,7 @@ class Search extends React.Component {
       stars={i.stars}
       topRating={i.topRating}
     />);
-  };
-
+  }
 
   render() {
     const { films, searchData } = this.props;
