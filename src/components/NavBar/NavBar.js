@@ -1,23 +1,51 @@
 import React from 'react';
-import { arrayOf, string } from 'prop-types';
-import { v4 as uuidv4 } from 'uuid';
+import { arrayOf, string, func } from 'prop-types';
+import { v4 as uuid4 } from 'uuid';
+import { Link } from 'react-router-dom';
+
+import { connect } from 'react-redux';
 
 
-let htmlData = arr => {
-  return arr.map(i => <h6 key={uuidv4()}>{i}</h6>);
-};
+import { chooseCategory } from '../../redux/categoryData/categoryDataActions';
 
-const NavBar = ({ list }) => {
-  return (
-    <>
-      {htmlData(list)}
-    </>
-  );
-};
+class NavBar extends React.Component {
+
+  clickHandlerCategoryChoose = (e) => {
+    const text = e.target.innerText;
+    this.props.dispatch(chooseCategory(text));
+  }
+
+  htmlData = arr => {
+    return arr.map(i => <li
+      className='category-item'
+      key={uuid4()}
+      onClick={this.clickHandlerCategoryChoose}
+    >
+      <Link to={`/categories/${this.props.category}`}>{i}</Link>
+
+    </li>);
+  };
+
+  render() {
+    const { list } = this.props;
+    return (
+      <ul>
+        {this.htmlData(list)}
+      </ul>
+    );
+  }
+}
+
 
 NavBar.propTypes = {
-  list: arrayOf(string)
+  list: arrayOf(string),
+  dispatch: func
 };
 
+const mapStateToProps = (state) => {
+  return {
+    category: state.categoryDataReducer.category
+  };
+};
 
-export default NavBar;
+export default connect(mapStateToProps)(NavBar);

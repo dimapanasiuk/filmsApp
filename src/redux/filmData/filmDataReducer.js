@@ -3,8 +3,6 @@ const initialState = {
 };
 
 function filmDataReducer(state = initialState, action) {
-  console.log('filmDataReducer', state, action);
-
   switch(action.type) {
     case 'CLICKONFILM':
       return {
