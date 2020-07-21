@@ -6,6 +6,8 @@ import Categories from '../Categories/Categories';
 import Search from '../Search/Search';
 import Home from '../Home/Home';
 import AboutFilm from '../AboutFilm/AboutFilm';
+import NotFound from '../NotFound/NotFound';
+
 import { func } from 'prop-types';
 
 import { connect } from "react-redux";
@@ -45,6 +47,7 @@ class Board extends React.Component {
             <Home />
           </Route>
 
+          <Route component={NotFound} />
         </Switch>
       </>
     );

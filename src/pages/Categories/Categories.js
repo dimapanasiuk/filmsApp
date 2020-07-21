@@ -1,39 +1,45 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { increment, decrement } from '../../redux/counter/actions';
-import { func } from 'prop-types';
+import { func, arrayOf, object } from 'prop-types';
+
+import './categories.scss';
+
+import NavBar from '../../components/NavBar/NavBar';
+import Home from '../Home/Home';
 
 
 class Categories extends React.Component {
-  increment = () => {
-    this.props.dispatch(increment());
-  }
-
-  decrement = () => {
-    this.props.dispatch(decrement());
-
+  getCategories() {
+    let { films } = this.props;
+    let allCategories = films.map(item => item.categories).flat();
+    return allCategories.filter((item, i, arr) => arr.indexOf(item) === i);
   }
 
   render() {
+    let categories = this.getCategories();
     return (
-      <>
-        <h1>Categories</h1>
-        <button onClick={this.increment}>increment</button>
-        <button onClick={this.decrement}>decrement</button>
-
-      </>
+      <div className="categories" >
+        <div>
+          <NavBar list={categories} />
+        </div>
+        <div>
+          <Home films={this.films} />
+        </div>
+      </div>
     );
   }
 }
 
 Categories.propTypes = {
   dispatch: func,
+  films: arrayOf(object),
 };
 
 const mapStateToProps = (state) => {
   return {
-    count: state.count
+    count: state.count,
+    films: state.filmsReducer.items
   };
 };
 

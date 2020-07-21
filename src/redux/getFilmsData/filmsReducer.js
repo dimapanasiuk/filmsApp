@@ -11,7 +11,8 @@ const initialState = {
 };
 
 export default function filmsReducer(state = initialState, action) {
-  switch(action.type) {
+  console.log('films reducer', action);
+  switch (action.type) {
     case FETCH_FILMS_BEGIN:
       return {
         ...state,

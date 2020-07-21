@@ -5,8 +5,20 @@ import { array } from 'prop-types';
 
 
 const Home = ({ films }) => {
-  console.log('props', films);
-  let filmsHtml = films.map(i => <Card key={i._id} title={i.title} />);
+  let filmsHtml = films.map(i => <Card
+    key={i._id}
+    id={i._id}
+    title={i.title}
+    release={i.releaseYear}
+    categories={i.categories}
+    description={i.description}
+    director={i.director}
+    duration={i.duration}
+    gross={i.gross}
+    smallPoster={i.smallPoster}
+    stars={i.stars}
+    topRating={i.topRating}
+    />);
 
   return filmsHtml;
 };
