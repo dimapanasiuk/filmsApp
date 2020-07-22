@@ -7,6 +7,7 @@ import Categories from '../Categories/Categories';
 import Search from '../Search/Search';
 import Home from '../Home/Home';
 import AboutFilm from '../AboutFilm/AboutFilm';
+import Login from '../Login/Login';
 import NotFound from '../NotFound/NotFound';
 
 import './Board.scss';
@@ -42,6 +43,10 @@ class Board extends React.Component {
 
           <Route path="/films/:about">
             <AboutFilm />
+          </Route>
+
+          <Route path="/login">
+            <Login />
           </Route>
 
           <Route exact path="/">

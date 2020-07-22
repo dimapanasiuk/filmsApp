@@ -8,7 +8,6 @@ import { chooseCategory } from '../../redux/categoryData/categoryDataActions';
 
 import './header.scss';
 
-import Login from '../Login/Login';
 import Search from '../Search/Search';
 
 
@@ -36,7 +35,7 @@ const Header = ({dispatch}) => {
 
       <ul className="main-header-right-block">
         <li><Search /></li>
-        <li><Login /></li>
+        <li><Link to='/login'>login</Link></li>
       </ul>
     </nav>
   );
