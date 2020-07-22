@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { func, arrayOf, object, string } from 'prop-types';
+import { func, arrayOf, object } from 'prop-types';
 
 import './categories.scss';
 
@@ -9,19 +9,29 @@ import NavBar from '../../components/NavBar/NavBar';
 import {searchMovieByKeyword} from '../../utils/utils';
 
 class Categories extends React.Component {
+
   getCategories(films) {
     let allCategories = films.map(item => item.categories).flat();
     return allCategories.filter((item, i, arr) => arr.indexOf(item) === i);
   }
 
-  render() {
-    let { films, category } = this.props;
-    let categories = this.getCategories(films);
 
+  state = { category: '' }
+
+  handleClickCategory = (categoryValue) => {
+      this.setState({category: categoryValue});
+  }
+
+
+  render() {
+    let { films } = this.props;
+    let { category } =this.state;
+
+    let categories = this.getCategories(films);
     return (
       <div className="categories" >
         <div>
-          <NavBar list={categories} />
+          <NavBar onSelectCategory={this.handleClickCategory} list={categories} />
         </div>
         <div>
           {searchMovieByKeyword(category, films)}
@@ -34,14 +44,12 @@ class Categories extends React.Component {
 Categories.propTypes = {
   dispatch: func,
   films: arrayOf(object),
-  category: string
 };
 
 const mapStateToProps = (state) => {
   return {
     count: state.count,
-    films: state.filmsReducer.items,
-    category: state.categoryDataReducer.category
+    films: state.filmsReducer.items
   };
 };
 

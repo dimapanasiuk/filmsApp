@@ -3,7 +3,6 @@ const initialState = {
 };
 
 function categoryDataReducer(state = initialState, action) {
-  console.log('action', action);
   switch(action.type) {
     case 'CHOOSECATEGORY':
       return {

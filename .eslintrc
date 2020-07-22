@@ -28,6 +28,8 @@
   "rules": {
     "semi": ["error", "always"],
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "warn",
+    "no-console": 1,
+    "no-alert": 1
   }
 }

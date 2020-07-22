@@ -47,7 +47,6 @@ Search.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     films: state.filmsReducer.items,
     searchData: state.searchDataReducer.searchFilm

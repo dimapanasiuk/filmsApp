@@ -3,34 +3,36 @@ import { arrayOf, string, func } from 'prop-types';
 import { v4 as uuid4 } from 'uuid';
 import { Link } from 'react-router-dom';
 
-import { connect } from 'react-redux';
-
-
-import { chooseCategory } from '../../redux/categoryData/categoryDataActions';
 
 class NavBar extends React.Component {
 
-  clickHandlerCategoryChoose = (e) => {
-    const text = e.target.innerText;
-    this.props.dispatch(chooseCategory(text));
+  state = {
+    category: ''
   }
 
-  htmlData = arr => {
+  handleChooseCategory = (e) => {
+    const categoryValue = e.target.innerText;
+    this.setState({category: categoryValue});
+    this.props.onSelectCategory(categoryValue);
+  }
+
+  htmlData = (arr, linkTo) => {
     return arr.map(i => <li
       className='category-item'
       key={uuid4()}
-      onClick={this.clickHandlerCategoryChoose}
+      onClick={this.handleChooseCategory}
     >
-      <Link to={`/categories/${this.props.category}`}>{i}</Link>
+      <Link to={linkTo}>{i}</Link>
 
     </li>);
   };
 
   render() {
-    const { list } = this.props;
+    let {category} = this.state;
+    let { list } = this.props;
     return (
       <ul>
-        {this.htmlData(list)}
+        {this.htmlData(list, `/categories/${category}`)}
       </ul>
     );
   }
@@ -39,13 +41,8 @@ class NavBar extends React.Component {
 
 NavBar.propTypes = {
   list: arrayOf(string),
-  dispatch: func
+  category: string,
+  onSelectCategory: func
 };
 
-const mapStateToProps = (state) => {
-  return {
-    category: state.categoryDataReducer.category
-  };
-};
-
-export default connect(mapStateToProps)(NavBar);
+export default NavBar;
