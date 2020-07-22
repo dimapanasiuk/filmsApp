@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { clickOnFilm } from '../../redux/filmData/filmDataActions';
+import { chooseCategory } from '../../redux/categoryData/categoryDataActions';
 
 import './card.scss';
 
@@ -12,17 +13,27 @@ import { v4 as uuidv4 } from 'uuid';
 
 class Card extends React.Component {
 
-arrParse = (arr, color) => {
-    const ButtonStyle = {
-      backgroundColor: color,
-    };
+  clickHandlerCategoryChoose = (e) => {
+    let category = e.target.innerText;
+    this.props.dispatch(chooseCategory(category));
+  }
 
+  categoryParse = (arr) => {
     return arr.map(i => <Link
       to={`/categories/${i}`}
       className='category-button'
-      style={ButtonStyle}
+      onClick={this.clickHandlerCategoryChoose}
       key={uuidv4()}>{i}</Link>);
-    };
+  };
+
+
+  starsParse =(arr) => {
+    return arr.map(i => <p
+      to={`/categories/${i}`}
+      className='stars-button'
+      key={uuidv4()}>{i}</p>);
+  }
+
 
   clickHandlerGetFilmName = (e) => {
     const parent = e.target.parentNode;
@@ -50,10 +61,13 @@ arrParse = (arr, color) => {
         <Link onClick={this.clickHandlerGetFilmName} to={`/films/${title}`}>
           <h1 className='main-card_title'>{title}</h1>
         </Link>
+
         <div className='main-card_layout-content'>
+
           <div>
             <img alt={`${title} img`} src={smallPoster} />
           </div>
+
           <div className='main-card_layout-content-information'>
 
             <div className='main-card_duration'>
@@ -89,14 +103,13 @@ arrParse = (arr, color) => {
 
             <div className='main-card_categories'>
               <h4>categories</h4>
-              {this.arrParse(categories, '#00b9f1')}
+              {this.categoryParse(categories)}
             </div>
 
             <div className='main-card_starts'>
               <h4>stars</h4>
-              {this.arrParse(stars, '#f9c00c')}
+              {this.starsParse(stars)}
             </div>
-
 
           </div>
         </div>

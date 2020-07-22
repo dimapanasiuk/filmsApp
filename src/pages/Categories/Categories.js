@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { func, arrayOf, object } from 'prop-types';
+import { func, arrayOf, object, string } from 'prop-types';
 
 import './categories.scss';
 
@@ -9,24 +9,16 @@ import NavBar from '../../components/NavBar/NavBar';
 import Card from '../../components/Card/Card';
 
 class Categories extends React.Component {
-  state = { category: '' }
-
   getCategories(films) {
     let allCategories = films.map(item => item.categories).flat();
     return allCategories.filter((item, i, arr) => arr.indexOf(item) === i);
   }
 
-  handleClickCategory = (categoryValue) => {
-    this.setState({ category: categoryValue });
-  }
-
-  searchMovieByKeyword = (category, films) => {
+  searchMovieByKeyword = (categoryState, films) => {
     const arr = films.filter(i => {
       let arrToStr = i.categories.join();
-      let num = arrToStr.indexOf(category);
-      if (num >= 0) {
-        return i;
-      }
+      let num = arrToStr.indexOf(categoryState);
+      return num >= 0;
     });
 
     return arr.map(i => <Card
@@ -47,32 +39,34 @@ class Categories extends React.Component {
 
 
   render() {
-    let { films } = this.props;
-    let { category } = this.state;
+    let { films, categoryChoose } = this.props;
 
     let categories = this.getCategories(films);
     return (
       <div className="categories" >
         <div className="categories-navbar" >
           <h2>Categories</h2>
-          <NavBar onSelectCategory={this.handleClickCategory} list={categories} />
+          <NavBar list={categories} />
         </div>
         <div className="categories-content">
-          {this.searchMovieByKeyword(category, films)}
+          {this.searchMovieByKeyword(categoryChoose, films)}
         </div>
       </div>
     );
   }
 }
 
+
 Categories.propTypes = {
   dispatch: func,
   films: arrayOf(object),
+  categoryChoose: string
 };
 
 const mapStateToProps = (state) => {
   return {
-    films: state.filmsReducer.items
+    films: state.filmsReducer.items,
+    categoryChoose: state.categoryDataReducer.category
   };
 };
 
