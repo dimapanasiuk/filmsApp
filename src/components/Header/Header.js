@@ -8,14 +8,18 @@ import Search from '../Search/Search';
 
 const Header = () => {
   return (
-    <nav>
-      <ul className="main-header">
+    <nav className='header-navigation'>
+
+      <ul className="main-header-left-block">
         <li>
           <Link to="/">Home</Link>
         </li>
         <li>
           <Link to="/categories">categories</Link>
         </li>
+      </ul>
+
+      <ul className="main-header-right-block">
         <li><Search /></li>
         <li><Login /></li>
       </ul>

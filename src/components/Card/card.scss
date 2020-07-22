@@ -1,13 +1,67 @@
+$base-border-radius: 4px;
+$base-margin: 20px;
+
 .main-card {
-  background-color: gray;
+  background-color: #91c6ff;
   margin: 10px 20px;
-  padding: 10px 10px 20px 10px;
+  padding: 13px 13px 20px 13px;
+  width: 90%;
+  border-radius: $base-border-radius;
 
   .main-card_title {
     cursor: pointer;
+    color: #090707;
+    padding-bottom: 10px;
   }
 
   .main-card_layout-content {
     display: flex;
   }
+
+  .main-card_layout-content-information {
+    margin-left: 20px;
+  }
+
+  .main-card_duration,
+  .main-card_rating,
+  .main-card_director,
+  .main-card_release,
+  .main-card_gross {
+    display: flex;
+    align-items: flex-end;
+    color:#2b2b2b;
+    margin-bottom: $base-margin/2;
+  }
+
+  .main-card_duration p,
+  .main-card_rating  p,
+  .main-card_director  p,
+  .main-card_release  p,
+  .main-card_gross p {
+    margin-left: $base-margin/2;
+    font-weight: 600;
+    color: #C5E99B;
+  }
+
+
+  .main-card_description h4 {
+    font-size: 22px;
+    color: #566270;
+  }
+
+  .main-card_description p {
+    font-size: 16px;
+    padding: 10px;
+    max-width: 800px;
+  }
+
+  .category-button {
+    border: none;
+    border-radius: $base-border-radius;
+    padding: 5px 10px;
+    font-size: 15px;
+    margin: 0 3px;
+    font-weight: 600;
+  }
+
 }

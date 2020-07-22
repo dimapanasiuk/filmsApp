@@ -1,6 +1,22 @@
-.main-header {
+.header-navigation {
   display: flex;
-  align-items: center;
-  background-color: gray;
-  justify-content: space-around;
+    align-items: center;
+    background-color: #f8f9fa;
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+    padding: 15px 40px 15px 15px;
+    top: 0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+
+    ul {
+      width: 50%;
+      display: flex;
+      align-items: center;
+
+      li {
+        margin-left: 20px;
+      }
+
+    }
 }

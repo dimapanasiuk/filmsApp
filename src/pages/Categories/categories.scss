@@ -1,5 +1,8 @@
+$base-navbar-width: 13%;
+
 .categories {
   display: flex;
+  width: 100%;
 }
 
 .category-item {
@@ -7,3 +10,18 @@
   padding: 5px;
   margin-bottom: 10px;
 }
+
+.categories-content {
+  width: 100% - $base-navbar-width;
+}
+
+.categories-navbar {
+  width: $base-navbar-width;
+  background-color: yellowgreen;
+  padding: 20px;
+
+  h2 {
+    margin-bottom: 10px;
+  }
+}
+

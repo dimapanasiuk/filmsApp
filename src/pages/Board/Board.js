@@ -1,5 +1,6 @@
 import React from 'react';
 import { Switch, Route } from "react-router-dom";
+import { func } from 'prop-types';
 
 import Header from '../../components/Header/Header';
 import Categories from '../Categories/Categories';
@@ -8,7 +9,7 @@ import Home from '../Home/Home';
 import AboutFilm from '../AboutFilm/AboutFilm';
 import NotFound from '../NotFound/NotFound';
 
-import { func } from 'prop-types';
+import './Board.scss';
 
 import { connect } from "react-redux";
 import { fetchFilms } from '../../redux/getFilmsData/filmsActions';
@@ -23,7 +24,7 @@ class Board extends React.Component {
 
   render() {
     return (
-      <>
+      <div className="main-content">
         <Header />
         <Switch>
 
@@ -49,7 +50,7 @@ class Board extends React.Component {
 
           <Route component={NotFound} />
         </Switch>
-      </>
+      </div>
     );
   }
 }
