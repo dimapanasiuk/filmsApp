@@ -9,7 +9,6 @@ class Registration extends React.Component {
     passwordSecond: ''
   }
 
-
   onChangeHandlerLogin = (e) => {
     this.setState({ login: e.target.value });
   }
@@ -36,9 +35,7 @@ class Registration extends React.Component {
     }
   }
 
-
   render() {
-    console.log('login', this.state);
     return (
       <form className='login-form'>
         <input onChange={this.onChangeHandlerLogin} type='text' placeholder='your login' required />

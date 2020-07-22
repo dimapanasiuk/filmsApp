@@ -5,14 +5,11 @@ import { func } from 'prop-types';
 
 import { chooseCategory } from '../../redux/categoryData/categoryDataActions';
 
-
 import './header.scss';
-
 import Search from '../Search/Search';
 
 
-
-const Header = ({dispatch}) => {
+const Header = ({ dispatch }) => {
 
   let resetChooseCategory = () => {
     dispatch(chooseCategory(''));
@@ -29,7 +26,7 @@ const Header = ({dispatch}) => {
           <Link
             to="/categories"
             onClick={resetChooseCategory}
-            >categories</Link>
+          >categories</Link>
         </li>
       </ul>
 
