@@ -1,27 +1,51 @@
 import React from "react";
-import { render, unmountComponentAtNode } from "react-dom";
+import ReactDOM from "react-dom";
 import { act } from "react-dom/test-utils";
 
-import Button from "../Button";
+class Button extends React.Component {
+  state = { text: "" };
+
+  handleClick = () => {
+    this.setState(() => {
+      return { text: "PROCEED TO CHECKOUT" };
+    });
+  }
+
+  render() {
+    return (
+      <button onClick={this.handleClick}>
+        {this.state.text || this.props.text}
+      </button>
+    );
+  }
+}
+
 
 let container = null;
+
 beforeEach(() => {
-  // подготавливаем DOM-элемент, куда будем рендерить
   container = document.createElement("div");
   document.body.appendChild(container);
 });
 
 afterEach(() => {
-  // подчищаем после завершения
-  unmountComponentAtNode(container);
-  container.remove();
+  document.body.removeChild(container);
   container = null;
 });
 
-it("renders with or without a name", () => {
 
-  act(() => {
-    render(<Button title="Jenny" />, container);
+describe("Button component", () => {
+  test("it shows the expected text when clicked", () => {
+    act(() => {
+      ReactDOM.render(<Button text="SUBSCRIBE TO BASIC" />, container);
+    });
+
+    const button = container.getElementsByTagName("button")[0];
+    expect(button.textContent).toBe("SUBSCRIBE TO BASIC");
+
+    act(() => {
+      button.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    });
+    expect(button.textContent).toBe("PROCEED TO CHECKOUT");
   });
-  expect(container.textContent).toBe("Jenny");
 });

@@ -3,11 +3,12 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-
 import combineReducers from '../redux/reducers';
 
-import "./global-style.scss";
 import Board from '../pages/Board/Board';
+
+import "./global-style.scss";
+
 
 const store = createStore(
   combineReducers,
@@ -25,5 +26,6 @@ class App extends Component {
     );
   }
 }
+
 
 export default App;
