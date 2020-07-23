@@ -5,10 +5,9 @@ import { Link } from 'react-router-dom';
 
 import { clickOnFilm } from '../../redux/filmData/filmDataActions';
 import { chooseCategory } from '../../redux/categoryData/categoryDataActions';
+import { starsParse, categoryParse } from '../../utils/utils';
 
 import './card.scss';
-
-import { v4 as uuidv4 } from 'uuid';
 
 
 class Card extends React.Component {
@@ -17,23 +16,6 @@ class Card extends React.Component {
     let category = e.target.innerText;
     this.props.dispatch(chooseCategory(category));
   }
-
-  categoryParse = (arr) => {
-    return arr.map(i => <Link
-      to={`/categories/${i}`}
-      className='category-button'
-      onClick={this.clickHandlerCategoryChoose}
-      key={uuidv4()}>{i}</Link>);
-  };
-
-
-  starsParse =(arr) => {
-    return arr.map(i => <p
-      to={`/categories/${i}`}
-      className='stars-button'
-      key={uuidv4()}>{i}</p>);
-  }
-
 
   clickHandlerGetFilmName = (e) => {
     const parent = e.target.parentNode;
@@ -103,12 +85,12 @@ class Card extends React.Component {
 
             <div className='main-card_categories'>
               <h4>categories</h4>
-              {this.categoryParse(categories)}
+              {categoryParse(categories, this.clickHandlerCategoryChoose)}
             </div>
 
             <div className='main-card_starts'>
               <h4>stars</h4>
-              {this.starsParse(stars)}
+              {starsParse(stars)}
             </div>
 
           </div>

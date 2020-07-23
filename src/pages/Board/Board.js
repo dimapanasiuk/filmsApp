@@ -1,7 +1,9 @@
 import React from 'react';
 import { Switch, Route } from "react-router-dom";
 import { func } from 'prop-types';
+import { connect } from "react-redux";
 
+import { fetchFilms } from '../../redux/getFilmsData/filmsActions';
 import Header from '../../components/Header/Header';
 import Categories from '../Categories/Categories';
 import Search from '../Search/Search';
@@ -11,10 +13,6 @@ import Login from '../Login/Login';
 import NotFound from '../NotFound/NotFound';
 
 import './Board.scss';
-
-import { connect } from "react-redux";
-import { fetchFilms } from '../../redux/getFilmsData/filmsActions';
-
 
 
 class Board extends React.Component {

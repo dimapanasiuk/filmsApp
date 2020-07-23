@@ -1,66 +1,77 @@
 import React from 'react';
-import { objectOf, string, arrayOf, object } from 'prop-types';
-
+import { objectOf, string, arrayOf, object, func } from 'prop-types';
 import { connect } from 'react-redux';
 
-import { arrParse } from '../../utils/utils';
-
+import { chooseCategory } from '../../redux/categoryData/categoryDataActions';
+import { starsParse, categoryParse } from '../../utils/utils';
 
 import './aboutFilm.scss';
 
-const getFilmData = (arr, findItem) => {
-  return arr.find(i => i.title === findItem);
-};
 
-const AboutFilm = ({ film, films }) => {
+class AboutFilm extends React.Component {
 
-  const { filmName } = film;
+  clickHandlerCategoryChoose = (e) => {
+    let category = e.target.innerText;
+    this.props.dispatch(chooseCategory(category));
+  }
 
-  const data = getFilmData(films, filmName);
+  getFilmData = (arr, findItem) => {
+    return arr.find(i => i.title === findItem);
+  };
 
-  const {
-    bigPoster,
-    releaseYear,
-    categories,
-    stars,
-    description,
-    director,
-    duration,
-    gross,
-    rating,
-  } = data;
+  render() {
+    let { filmName } = this.props.film;
+    let { films } = this.props;
 
-  return (
-    <div className='about'>
-      <div>
-        <img src={bigPoster} alt={filmName} />
-      </div>
-      <div>
-        <h1>{filmName}</h1>
-        <div>
-          <h1>Duration{duration}</h1>
-          <h1>Rating {rating}</h1>
-          <h1>Director {director}</h1>
-          <h1>Release{releaseYear}</h1>
-          <h1>gross{gross}</h1>
+    let data = this.getFilmData(films, filmName);
 
-          <h3>stars</h3>
-          {arrParse(stars)}
+    let {
+      bigPoster,
+      releaseYear,
+      categories,
+      stars,
+      description,
+      director,
+      duration,
+      gross,
+      rating,
+    } = data;
 
-          <h3>categories</h3>
-          {arrParse(categories)}
+    return (
+      <div className='about'>
 
-          <p>{description}</p>
+        <div className='about_pic'>
+          <img src={bigPoster} alt={filmName} />
+        </div>
+
+        <div className='about_content'>
+          <h1>{filmName}</h1>
+          <div>
+            <h1>Duration{duration}</h1>
+            <h1>Rating {rating}</h1>
+            <h1>Director {director}</h1>
+            <h1>Release{releaseYear}</h1>
+            <h1>gross{gross}</h1>
+
+            <h3>stars</h3>
+            {starsParse(stars)}
+
+            <h3>categories</h3>
+            {categoryParse(categories, this.clickHandlerCategoryChoose)}
+
+            <p>{description}</p>
+          </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 
 AboutFilm.propTypes = {
   film: objectOf(string),
   films: arrayOf(object),
+  dispatch: func
 };
 
 const mapStateToProps = (state) => {

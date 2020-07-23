@@ -1,5 +1,23 @@
 .about {
   display: flex;
-  background-color: yellowgreen;
+  height: 100%;
+  width: 100%;
+
+  .about_pic {
+    padding: 100px;
+    width: 50%;
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .about_content {
+    margin-top: 100px;
+    background-color: red;
+  }
 
 }
+
+

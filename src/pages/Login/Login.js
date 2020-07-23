@@ -1,6 +1,8 @@
 import React from 'react';
+
 import Registration from '../../components/Registration/Registration';
 import SignOut from '../../components/SignOut/SignOut';
+
 
 class Login extends React.Component {
   isRegistration = () => {
@@ -11,7 +13,7 @@ class Login extends React.Component {
 
   render() {
     let content = () => {
-      return this.isRegistration()? <SignOut /> : <Registration />;
+      return this.isRegistration() ? <SignOut /> : <Registration />;
     };
 
     return (
@@ -21,5 +23,6 @@ class Login extends React.Component {
     );
   }
 }
+
 
 export default Login;

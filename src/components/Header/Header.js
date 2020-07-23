@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import { func } from 'prop-types';
 
 import { chooseCategory } from '../../redux/categoryData/categoryDataActions';
-
-import './header.scss';
 import Search from '../Search/Search';
 
+
+import './header.scss';
 
 const Header = ({ dispatch }) => {
 
