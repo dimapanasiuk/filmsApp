@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { act } from "react-dom/test-utils";
+import { string } from 'prop-types';
 
 class Button extends React.Component {
   state = { text: "" };
@@ -12,14 +13,18 @@ class Button extends React.Component {
   }
 
   render() {
+    let { text } = this.props;
     return (
       <button onClick={this.handleClick}>
-        {this.state.text || this.props.text}
+        {this.state.text || text}
       </button>
     );
   }
 }
 
+Button.propTypes = {
+  text: string
+};
 
 let container = null;
 

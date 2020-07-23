@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import configureStore from 'redux-mock-store';
 import NavBar from "../NavBar";
 
+import renderer from 'react-test-renderer';
 
 
 let container = null;
@@ -52,7 +53,7 @@ it("renders with or without a opportunity", () => {
     render(
       <Provider store={store}>
         <Router>
-        <NavBar list={['test', 'data']} />
+          <NavBar list={['test', 'data']} />
         </Router>
       </Provider>, container);
   });
@@ -65,11 +66,25 @@ it("renders with or without a opportunity", () => {
     render(
       <Provider store={store}>
         <Router>
-        <NavBar list={['test', 'data']} />
+          <NavBar list={['test', 'data']} />
         </Router>
       </Provider>, container);
   });
 
   const list2 = container.getElementsByTagName("li")[1];
   expect(list2.textContent).toBe("data");
+
+  act(() => {
+    list.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+  });
+  expect(list.textContent).toBe("test");
+
+  const tree = renderer.create(<Provider store={store}>
+    <Router>
+      <NavBar list={['test', 'data']} />
+    </Router>
+  </Provider>).toJSON();
+  expect(tree).toMatchSnapshot();
+
+
 });
