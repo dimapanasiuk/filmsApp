@@ -21,8 +21,6 @@ afterEach(() => {
   container = null;
 });
 
-
-
 const middlewares = [];
 
 const mockStore = configureStore(middlewares);
@@ -38,11 +36,12 @@ it("renders with or without a name", () => {
   const actions = store.getActions();
   const expectedPayload = { type: 'CHOOSECATEGORY', data: 'test' };
   expect(actions).toEqual([expectedPayload]);
-  // act(() => {
-  //   render(
-  //     <Provider store={store}>
-  //     <NavBar />
-  // </Provider>, container);
-  // });
-  // expect(container.textContent).toBe("");
+
+  act(() => {
+    render(
+      <Provider store={store}>
+      <NavBar list={[]}/>
+  </Provider>, container);
+  });
+  expect(container.textContent).toBe("");
 });
