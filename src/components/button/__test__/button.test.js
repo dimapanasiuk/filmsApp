@@ -1,26 +1,27 @@
-import React from "react"
-import { render, unmountComponentAtNode } from "react-dom"
-import { act } from "react-dom/test-utils"
+import React from "react";
+import { render, unmountComponentAtNode } from "react-dom";
+import { act } from "react-dom/test-utils";
 
-import Button from "../Button.jsx"
+import Button from "../Button";
 
-let container = null
+let container = null;
 beforeEach(() => {
   // подготавливаем DOM-элемент, куда будем рендерить
-  container = document.createElement("div")
-  document.body.appendChild(container)
-})
+  container = document.createElement("div");
+  document.body.appendChild(container);
+});
 
 afterEach(() => {
   // подчищаем после завершения
-  unmountComponentAtNode(container)
-  container.remove()
-  container = null
-})
+  unmountComponentAtNode(container);
+  container.remove();
+  container = null;
+});
 
-it("renders with name and without  name", () => {
+it("renders with or without a name", () => {
+
   act(() => {
-    render(<Button label="click me" />, container)
-  })
-  expect(container.textContent).toBe("click me")
-})
+    render(<Button title="Jenny" />, container);
+  });
+  expect(container.textContent).toBe("Jenny");
+});

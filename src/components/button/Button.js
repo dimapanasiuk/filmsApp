@@ -1,10 +1,10 @@
-import React from "./node_modules/react";
-// import './button.css';
+import React from "react";
+import './button.css';
 
-const Button = (props) => {
+const Button = ({title}) => {
   return (
-    <div data-testId="button" className="button-style">
-      {props}
+    <div className="button-style">
+      {title}
     </div>
   );
 };

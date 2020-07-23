@@ -7,7 +7,7 @@ import { clickOnFilm } from '../../redux/filmData/filmDataActions';
 import { chooseCategory } from '../../redux/categoryData/categoryDataActions';
 import { starsParse, categoryParse } from '../../utils/utils';
 
-import './card.scss';
+// import './card.scss';
 
 
 class Card extends React.Component {

@@ -29,20 +29,19 @@ $base-margin: 20px;
   .main-card_gross {
     display: flex;
     align-items: flex-end;
-    color:#2b2b2b;
+    color: #2b2b2b;
     margin-bottom: $base-margin/2;
   }
 
   .main-card_duration p,
-  .main-card_rating  p,
-  .main-card_director  p,
-  .main-card_release  p,
+  .main-card_rating p,
+  .main-card_director p,
+  .main-card_release p,
   .main-card_gross p {
     margin-left: $base-margin/2;
     font-weight: 600;
-    color: #C5E99B;
+    color: #c5e99b;
   }
-
 
   .main-card_description h4 {
     font-size: 22px;
@@ -63,5 +62,4 @@ $base-margin: 20px;
     margin: 0 3px;
     font-weight: 600;
   }
-
 }
