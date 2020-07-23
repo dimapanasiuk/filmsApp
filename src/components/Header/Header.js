@@ -6,8 +6,8 @@ import { func } from 'prop-types';
 import { chooseCategory } from '../../redux/categoryData/categoryDataActions';
 import Search from '../Search/Search';
 
-
 import './header.scss';
+
 
 const Header = ({ dispatch }) => {
 

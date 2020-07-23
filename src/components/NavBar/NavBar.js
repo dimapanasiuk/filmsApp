@@ -1,5 +1,5 @@
 import React from 'react';
-import { arrayOf, string, func } from 'prop-types';
+import { arrayOf, string, func, object } from 'prop-types';
 import { v4 as uuid4 } from 'uuid';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -26,10 +26,11 @@ class NavBar extends React.Component {
   });
 
   render() {
-    let { list, category } = this.props;
+    let { list } = this.props;
+
     return (
-      <ul>
-        {this.htmlData(list, category)}
+      <ul data-testid="count-value">
+        {this.htmlData(list)}
       </ul>
     );
   }
@@ -38,14 +39,12 @@ class NavBar extends React.Component {
 
 NavBar.propTypes = {
   list: arrayOf(string),
-  category: string,
-  dispatch: func
+  dispatch: func,
+  chooseCategory: object
 };
 
 const mapStateToProps = (state) => {
-  return {
-    category: state.categoryDataReducer.category
-  };
+  return state;
 };
 
 export default connect(mapStateToProps)(NavBar);
