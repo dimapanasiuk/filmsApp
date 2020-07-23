@@ -36,6 +36,7 @@ it("renders with or without a opportunity", () => {
 
   const actions = store.getActions();
   const expectedPayload = { type: 'CHOOSECATEGORY', data: 'test' };
+
   expect(actions).toEqual([expectedPayload]);
 
   act(() => {
