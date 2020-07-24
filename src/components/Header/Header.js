@@ -16,30 +16,32 @@ const Header = ({ dispatch }) => {
   };
 
   return (
-    <nav className='header-navigation'>
+    <header>
+      <nav className='header-navigation'>
 
-      <ul className="main-header-left-block">
-        <li>
-          <NavLink exact to="/"
-          className='header-navigation_default-button'
-          >Home</NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/categories"
-            className='header-navigation_default-button'
-            onClick={resetChooseCategory}
-          >Categories</NavLink>
-        </li>
-      </ul>
-
-      <ul className="main-header-right-block">
-        <li><Search /></li>
-        <li>
-          <Link to='/login' className='login-button'>Login</Link>
+        <ul className="main-header-left-block">
+          <li>
+            <NavLink exact to="/"
+              className='header-navigation_default-button'
+            >Home</NavLink>
           </li>
-      </ul>
-    </nav>
+          <li>
+            <NavLink
+              to="/categories"
+              className='header-navigation_default-button'
+              onClick={resetChooseCategory}
+            >Categories</NavLink>
+          </li>
+        </ul>
+
+        <ul className="main-header-right-block">
+          <li><Search /></li>
+          <li>
+            <Link to='/login' className='login-button'>Login</Link>
+          </li>
+        </ul>
+      </nav>
+    </header>
   );
 };
 

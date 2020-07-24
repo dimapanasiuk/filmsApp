@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with or without a opportunity 1`] = `
+<aside>
+  <nav>
+    <ul>
+      <li
+        className="category-item"
+      >
+        <a
+          href="/categories/test"
+          onClick={[Function]}
+        >
+          test
+        </a>
+      </li>
+      <li
+        className="category-item"
+      >
+        <a
+          href="/categories/data"
+          onClick={[Function]}
+        >
+          data
+        </a>
+      </li>
+    </ul>
+  </nav>
+</aside>
+`;

@@ -7,9 +7,7 @@ import { Provider } from "react-redux";
 import configureStore from 'redux-mock-store';
 import NavBar from "../NavBar";
 
-// import renderer from 'react-test-renderer';
-
-import '@testing-library/jest-dom/matchers';
+import renderer from 'react-test-renderer';
 import '@testing-library/jest-dom';
 
 let container = null;
@@ -28,7 +26,6 @@ afterEach(() => {
 const middlewares = [];
 
 const mockStore = configureStore(middlewares);
-
 const actionFire = () => ({ type: 'CHOOSECATEGORY', data: 'test' });
 
 
@@ -82,11 +79,10 @@ it("renders with or without a opportunity", () => {
 
 
 
-  // const tree = renderer.create(<Provider store={store}>
-  //   <Router>
-  //     <NavBar list={['test', 'data']} />
-  //   </Router>
-  // </Provider>).toJSON();
-  // expect(tree).toMatchSnapshot();
-
+  const tree = renderer.create(<Provider store={store}>
+    <Router>
+      <NavBar list={['test', 'data']} />
+    </Router>
+  </Provider>).toJSON();
+  expect(tree).toMatchSnapshot();
 });

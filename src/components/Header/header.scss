@@ -27,10 +27,9 @@ $base-border-radius: 4px;
   ul {
     display: flex;
     align-items: center;
-
-    li {
-      margin-left: 20px;
-    }
+  }
+  ul li {
+    margin-right: 10px;
   }
 
   .active {
