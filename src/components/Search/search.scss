@@ -1,4 +1,23 @@
-form {
-  width: 100%;
-  position: absolute;
+$base-border-radius: 4px;
+
+.search {
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  border-radius: $base-border-radius;
+  border: 1.2px solid #ced4da;
+  color: black;
+  margin-right: 5px;
+  padding: 8px;
+}
+
+.search-button {
+  display: block;
+  border-radius: $base-border-radius;
+  padding: 8px 10px;
+  background-color: #26c44a;
+  color: white;
+  font-weight: 600;
 }

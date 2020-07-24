@@ -13,12 +13,17 @@ $base-navbar-width: 13%;
 
 .categories-content {
   width: 100% - $base-navbar-width;
+  margin-top: 80px;
 }
 
 .categories-navbar {
   width: $base-navbar-width;
   background-color: yellowgreen;
   padding: 20px;
+
+  .categories-navbar_wrapper {
+    margin-top: 80px;
+  }
 
   h2 {
     margin-bottom: 10px;

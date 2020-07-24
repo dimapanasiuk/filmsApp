@@ -45,8 +45,10 @@ class Categories extends React.Component {
     return (
       <div className="categories" >
         <div className="categories-navbar" >
+          <div className="categories-navbar_wrapper">
           <h2>Categories</h2>
           <NavBar list={categories} />
+          </div>
         </div>
         <div className="categories-content">
           {this.searchMovieByKeyword(categoryChoose, films)}

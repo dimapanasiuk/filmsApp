@@ -5,6 +5,9 @@ import { func } from 'prop-types';
 
 import { searchFilm } from '../../redux/searchData/searchDataActions';
 
+import './search.scss';
+
+
 class Search extends React.Component {
 
   clickHandlerSearch = (e) => {
@@ -14,9 +17,9 @@ class Search extends React.Component {
 
   render() {
     return (
-      <form>
-        <input label="search" placeholder="search" />
-        <Link onClick={this.clickHandlerSearch} to="/search">
+      <form className="search">
+        <input className="search-input" label="search" placeholder="search" />
+        <Link className="search-button" onClick={this.clickHandlerSearch} to="/search">
           Search
         </Link>
       </form>

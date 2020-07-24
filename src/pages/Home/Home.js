@@ -3,6 +3,7 @@ import Card from '../../components/Card/Card';
 import { connect } from 'react-redux';
 import { array } from 'prop-types';
 
+import './home.scss';
 
 const Home = ({ films }) => {
   let filmsHtml = films.map(i => <Card
@@ -18,9 +19,13 @@ const Home = ({ films }) => {
     smallPoster={i.smallPoster}
     stars={i.stars}
     topRating={i.topRating}
-    />);
+  />);
 
-  return filmsHtml;
+  return (
+    <div className='home-wrapper'>
+      {filmsHtml}
+    </div>
+  );
 };
 
 Home.propTypes = {

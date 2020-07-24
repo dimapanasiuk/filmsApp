@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 
 
 export let starsParse = (arr) => {
-  return arr.map(i => <p
+  return arr.map(i => <span
     to={`/categories/${i}`}
-    key={uuidv4()}>{i}</p>);
+    key={uuidv4()}>{i}</span>);
 };
 
 export let categoryParse = (arr, onClickHandler) => {

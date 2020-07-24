@@ -46,20 +46,20 @@ class Card extends React.Component {
 
         <div className='main-card_layout-content'>
 
-          <div>
+          <div className='main-card_layout-content-pic'>
             <img alt={`${title} img`} src={smallPoster} />
           </div>
 
           <div className='main-card_layout-content-information'>
 
-            <div className='main-card_duration'>
-              <h4>Duration</h4>
-              <p>{duration} m</p>
-            </div>
-
             <div className='main-card_rating '>
               <h4>Rating </h4>
               <p>{topRating}</p>
+            </div>
+
+            <div className='main-card_duration'>
+              <h4>Duration</h4>
+              <p>{duration} m</p>
             </div>
 
             <div className='main-card_director'>
@@ -77,6 +77,12 @@ class Card extends React.Component {
               <p>{gross}</p>
             </div>
 
+            <div className='main-card_starts'>
+              <h4>Stars</h4>
+              {starsParse(stars)}
+            </div>
+
+
             <div className='main-card_description'>
               <h4>Description</h4>
               <p>{description}</p>
@@ -84,13 +90,10 @@ class Card extends React.Component {
 
 
             <div className='main-card_categories'>
-              <h4>categories</h4>
-              {categoryParse(categories, this.clickHandlerCategoryChoose)}
-            </div>
-
-            <div className='main-card_starts'>
-              <h4>stars</h4>
-              {starsParse(stars)}
+              <h4>Categories</h4>
+              <div className='main-card_categories-wrapper'>
+                {categoryParse(categories, this.clickHandlerCategoryChoose)}
+              </div>
             </div>
 
           </div>

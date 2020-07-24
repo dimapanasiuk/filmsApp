@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { func } from 'prop-types';
 
@@ -20,19 +20,24 @@ const Header = ({ dispatch }) => {
 
       <ul className="main-header-left-block">
         <li>
-          <Link to="/">Home</Link>
+          <NavLink exact to="/"
+          className='header-navigation_default-button'
+          >Home</NavLink>
         </li>
         <li>
-          <Link
+          <NavLink
             to="/categories"
+            className='header-navigation_default-button'
             onClick={resetChooseCategory}
-          >categories</Link>
+          >Categories</NavLink>
         </li>
       </ul>
 
       <ul className="main-header-right-block">
         <li><Search /></li>
-        <li><Link to='/login'>login</Link></li>
+        <li>
+          <Link to='/login' className='login-button'>Login</Link>
+          </li>
       </ul>
     </nav>
   );

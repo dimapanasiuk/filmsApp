@@ -10,16 +10,28 @@ $base-margin: 20px;
 
   .main-card_title {
     cursor: pointer;
-    color: #090707;
     padding-bottom: 10px;
+    font-size: 30px;
+    color: #007bff;
+    font-weight: 700;
   }
 
   .main-card_layout-content {
     display: flex;
+    .main-card_layout-content-pic {
+      width: 17%;
+      height: 100%;
+    }
+
+    .main-card_layout-content-pic img {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   .main-card_layout-content-information {
     margin-left: 20px;
+
   }
 
   .main-card_duration,
@@ -29,9 +41,47 @@ $base-margin: 20px;
   .main-card_gross {
     display: flex;
     align-items: flex-end;
-    color: #2b2b2b;
-    margin-bottom: $base-margin/2;
+    margin-bottom: $base-margin/2.4;
+    color: #6c757d;
+    font-weight: 700;
   }
+
+  .main-card_rating {
+    margin-bottom: 20px;
+    h4 {
+      font-size: 27px;
+      color: #566270;
+    }
+
+    p {
+      font-size: 23px;
+    }
+  }
+
+  .main-card_duration,
+  .main-card_director,
+  .main-card_release,
+  .main-card_gross {
+    h4 {
+      font-size: 21px;
+
+    }
+
+    p {
+      font-size: 19px;
+    }
+  }
+
+  .main-card_starts {
+    h4 {
+      color: #6c757d;
+      font-size: 21px;
+    }
+    span {
+      margin-right:10px ;
+    }
+  }
+
 
   .main-card_duration p,
   .main-card_rating p,
@@ -40,12 +90,15 @@ $base-margin: 20px;
   .main-card_gross p {
     margin-left: $base-margin/2;
     font-weight: 600;
-    color: #c5e99b;
+    color: #212529;
   }
 
-  .main-card_description h4 {
-    font-size: 22px;
-    color: #566270;
+  .main-card_description {
+    margin-top: 20px;
+    h4 {
+      font-size: 22px;
+      color: #566270;
+    }
   }
 
   .main-card_description p {
@@ -54,12 +107,32 @@ $base-margin: 20px;
     max-width: 800px;
   }
 
-  .category-button {
-    border: none;
-    border-radius: $base-border-radius;
-    padding: 5px 10px;
-    font-size: 15px;
-    margin: 0 3px;
-    font-weight: 600;
+  .main-card_categories {
+
+    h4 {
+      margin-bottom: 18px;
+      color: #566270;
+      font-size: 17px;
+    }
+
+    .main-card_categories-wrapper {
+      margin-left: 10px;
+    }
+
+    .category-button {
+      border: none;
+      border-radius: $base-border-radius;
+      padding: 5px 10px;
+      font-size: 15px;
+      margin-right: 5px;
+      font-weight: 600;
+      background-color: #ffc107;
+      color: #212529;
+    }
+    .category-button:hover {
+      background-color: #e0a800;
+      color:#212529;
+    }
   }
+
 }
