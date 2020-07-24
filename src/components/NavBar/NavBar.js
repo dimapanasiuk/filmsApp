@@ -29,9 +29,13 @@ class NavBar extends React.Component {
     let { list } = this.props;
 
     return (
-      <ul data-testid="count-value">
-        {this.htmlData(list)}
-      </ul>
+      <aside>
+        <nav >
+          <ul data-testid="count-value">
+            {this.htmlData(list)}
+          </ul>
+        </nav>
+      </aside>
     );
   }
 }

@@ -1,4 +1,5 @@
 $base-navbar-width: 13%;
+$base-radius: 4px;
 
 .categories {
   display: flex;
@@ -6,9 +7,20 @@ $base-navbar-width: 13%;
 }
 
 .category-item {
-  background-color: yellow;
-  padding: 5px;
-  margin-bottom: 10px;
+  background-color: #007bff;
+  border-radius: $base-radius;
+  padding: 9px 15px;
+  margin-bottom: 15px;
+  font-weight: 500;
+
+  a {
+    color: white;
+  }
+}
+
+.category-item:hover {
+  background-color:#0874e8;
+  color: #fff !important;
 }
 
 .categories-content {
@@ -18,15 +30,20 @@ $base-navbar-width: 13%;
 
 .categories-navbar {
   width: $base-navbar-width;
-  background-color: yellowgreen;
-  padding: 20px;
 
   .categories-navbar_wrapper {
-    margin-top: 80px;
+    padding: 80px 40px 20px;
+    height: 10%;
+    display: flex;
+    position: -webkit-sticky;
+    position: sticky;
+    flex-direction: column;
+    z-index: 9;
+    top: -680px;
+    background-color: #6c757d;
   }
 
   h2 {
     margin-bottom: 10px;
   }
 }
-

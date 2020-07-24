@@ -34,9 +34,9 @@ class Search extends React.Component {
     const { films, searchData } = this.props;
 
     return (
-      <>
+      <div className='search-wrapper'>
         {this.searchMovieByKeyword(searchData, films)}
-      </>
+      </div>
     );
   }
 }
