@@ -31,7 +31,7 @@ class NavBar extends React.Component {
     return (
       <aside>
         <nav >
-          <ul data-testid="count-value">
+          <ul>
             {this.htmlData(list)}
           </ul>
         </nav>

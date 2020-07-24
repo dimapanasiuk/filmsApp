@@ -7,8 +7,10 @@ import { Provider } from "react-redux";
 import configureStore from 'redux-mock-store';
 import NavBar from "../NavBar";
 
-import renderer from 'react-test-renderer';
+// import renderer from 'react-test-renderer';
 
+import '@testing-library/jest-dom/matchers';
+import '@testing-library/jest-dom';
 
 let container = null;
 
@@ -48,18 +50,7 @@ it("renders with or without a opportunity", () => {
   });
 
   expect(container.textContent).toBe("");
-
-  act(() => {
-    render(
-      <Provider store={store}>
-        <Router>
-          <NavBar list={['test', 'data']} />
-        </Router>
-      </Provider>, container);
-  });
-
-  const list = container.getElementsByTagName("li")[0];
-  expect(list.textContent).toBe("test");
+  expect(document.querySelector('ul')).toBeEmptyDOMElement();
 
 
   act(() => {
@@ -71,20 +62,31 @@ it("renders with or without a opportunity", () => {
       </Provider>, container);
   });
 
-  const list2 = container.getElementsByTagName("li")[1];
-  expect(list2.textContent).toBe("data");
+  const listValues = container.getElementsByTagName("li");
+
+  expect(listValues[0].textContent).toHaveLength(4);
+  expect(listValues[1].textContent).toBe("data");
+  expect(document.querySelector('li')).toBeVisible();
+
+
+  const links = container.getElementsByTagName("a");
+
+  links[0].focus();
+  expect(links[0]).toHaveFocus();
+
 
   act(() => {
-    list.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    listValues[0].dispatchEvent(new MouseEvent("click", { bubbles: true }));
   });
-  expect(list.textContent).toBe("test");
+  expect(listValues[0].textContent).toBe("test");
 
-  const tree = renderer.create(<Provider store={store}>
-    <Router>
-      <NavBar list={['test', 'data']} />
-    </Router>
-  </Provider>).toJSON();
-  expect(tree).toMatchSnapshot();
 
+
+  // const tree = renderer.create(<Provider store={store}>
+  //   <Router>
+  //     <NavBar list={['test', 'data']} />
+  //   </Router>
+  // </Provider>).toJSON();
+  // expect(tree).toMatchSnapshot();
 
 });
