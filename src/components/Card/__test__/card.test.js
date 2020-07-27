@@ -8,6 +8,8 @@ import configureStore from 'redux-mock-store';
 
 import Card from "../Card";
 
+// import '@testing-library/react';
+
 // import renderer from 'react-test-renderer';
 import '@testing-library/jest-dom';
 
