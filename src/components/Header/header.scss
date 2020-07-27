@@ -13,6 +13,7 @@ header {
 
 .main-header-right-block {
   display: flex;
+  align-items: center;
 
   li {
     margin-left: 20px;
@@ -21,3 +22,4 @@ header {
     color: white;
   }
 }
+

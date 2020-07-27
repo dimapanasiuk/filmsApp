@@ -14,10 +14,5 @@ $base-border-radius: 4px;
 }
 
 .search-button {
-  display: block;
-  border-radius: $base-border-radius;
-  padding: 8px 10px;
-  background-color: #26c44a;
-  color: white;
-  font-weight: 600;
+  margin-left: 10px !important;
 }

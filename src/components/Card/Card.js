@@ -8,6 +8,16 @@ import { chooseCategory } from '../../redux/categoryData/categoryDataActions';
 import { starsParse, categoryParse } from '../../utils/utils';
 
 import './card.scss';
+import { makeStyles } from '@material-ui/core/styles';
+import {
+  Container,
+  Card as CardStyle,
+  CardActionArea,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Typography,
+} from '@material-ui/core';
 
 
 class Card extends React.Component {
@@ -38,67 +48,95 @@ class Card extends React.Component {
       topRating,
     } = this.props;
     return (
-      <div id={id} className='main-card'>
+      <Container maxWidth='xl' style={{ marginBottom: '20px' }}>
+        <CardStyle>
+          <CardActionArea style={{ display: 'flex', justifyContent: "flex-start" }}>
+            <CardMedia
+              style={{ height: '100%', width: 'auto' }}
+              component="img"
+              alt="Contemplative Reptile"
+              height="140"
+              image={smallPoster}
+              title="Contemplative Reptile"
+            />
+            <CardContent>
 
-        <Link onClick={this.clickHandlerGetFilmName} to={`/films/${title}`}>
-          <h1 className='main-card_title'>{title}</h1>
-        </Link>
-
-        <div className='main-card_layout-content'>
-
-          <div className='main-card_layout-content-pic'>
-            <img alt={`${title} img`} src={smallPoster} />
-          </div>
-
-          <div className='main-card_layout-content-information'>
-
-            <div className='main-card_rating '>
-              <h4>Rating </h4>
-              <p>{topRating}</p>
-            </div>
-
-            <div className='main-card_duration'>
-              <h4>Duration</h4>
-              <p>{duration} m</p>
-            </div>
-
-            <div className='main-card_director'>
-              <h4>Director</h4>
-              <p>{director}</p>
-            </div>
-
-            <div className='main-card_release'>
-              <h4>Release</h4>
-              <p>{release}</p>
-            </div>
-
-            <div className='main-card_gross'>
-              <h4>Gross</h4>
-              <p>{gross}</p>
-            </div>
-
-            <div className='main-card_starts'>
-              <h4>Stars</h4>
-              {starsParse(stars)}
-            </div>
-
-
-            <div className='main-card_description'>
-              <h4>Description</h4>
-              <p>{description}</p>
-            </div>
-
-
-            <div className='main-card_categories'>
-              <h4>Categories</h4>
-              <div className='main-card_categories-wrapper'>
+              <Typography gutterBottom variant="h5" component="h2">
+                Lizard
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+                across all continents except Antarctica
+          </Typography>
+              <CardActions>
                 {categoryParse(categories, this.clickHandlerCategoryChoose)}
-              </div>
-            </div>
+              </CardActions>
+            </CardContent>
 
-          </div>
-        </div>
-      </div>
+          </CardActionArea>
+
+        </CardStyle>
+      </Container>
+
+      //   <Link onClick={this.clickHandlerGetFilmName} to={`/films/${title}`}>
+      //     <h1 className='main-card_title'>{title}</h1>
+      //   </Link>
+
+      //   <div className='main-card_layout-content'>
+
+      //     <div className='main-card_layout-content-pic'>
+      //       <img alt={`${title} img`} src={smallPoster} />
+      //     </div>
+
+      //     <div className='main-card_layout-content-information'>
+
+      //       <div className='main-card_rating '>
+      //         <h4>Rating </h4>
+      //         <p>{topRating}</p>
+      //       </div>
+
+      //       <div className='main-card_duration'>
+      //         <h4>Duration</h4>
+      //         <p>{duration} m</p>
+      //       </div>
+
+      //       <div className='main-card_director'>
+      //         <h4>Director</h4>
+      //         <p>{director}</p>
+      //       </div>
+
+      //       <div className='main-card_release'>
+      //         <h4>Release</h4>
+      //         <p>{release}</p>
+      //       </div>
+
+      //       <div className='main-card_gross'>
+      //         <h4>Gross</h4>
+      //         <p>{gross}</p>
+      //       </div>
+
+      //       <div className='main-card_starts'>
+      //         <h4>Stars</h4>
+      //         {starsParse(stars)}
+      //       </div>
+
+
+      //       <div className='main-card_description'>
+      //         <h4>Description</h4>
+      //         <p>{description}</p>
+      //       </div>
+
+
+      //       <div className='main-card_categories'>
+      //         <h4>Categories</h4>
+      //         <div className='main-card_categories-wrapper'>
+      //           {categoryParse(categories, this.clickHandlerCategoryChoose)}
+      //         </div>
+      //       </div>
+
+      //     </div>
+      //   </div>
+      // </div>
     );
   }
 }

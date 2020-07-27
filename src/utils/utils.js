@@ -1,6 +1,8 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
+
 
 
 export let starsParse = (arr) => {
@@ -10,9 +12,14 @@ export let starsParse = (arr) => {
 };
 
 export let categoryParse = (arr, onClickHandler) => {
-  return arr.map(i => <Link
+  return arr.map(i => <Button
+    key={uuidv4()}
+    component={Link}
     to={`/categories/${i}`}
-    className='category-button'
     onClick={onClickHandler}
-    key={uuidv4()}>{i}</Link>);
+    size="small"
+    color="primary">
+    {i}
+  </Button>
+  );
 };

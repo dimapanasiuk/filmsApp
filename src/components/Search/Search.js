@@ -1,11 +1,13 @@
 import React from "react";
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
-import { func } from 'prop-types';
+import { func, object } from 'prop-types';
 
 import { searchFilm } from '../../redux/searchData/searchDataActions';
 
 import './search.scss';
+import {TextField, Button} from '@material-ui/core';
+import { Autocomplete } from '@material-ui/lab';
 
 
 class Search extends React.Component {
@@ -16,12 +18,28 @@ class Search extends React.Component {
   }
 
   render() {
+    let {films} = this.props;
+
     return (
       <form className="search">
-        <input className="search-input" label="search" placeholder="search" />
+    <Autocomplete
+        style={{ width: 300 }}
+        id="free-solo-demo"
+        freeSolo
+        onChange = {(e) => console.log(e.target.innerText) }
+        options={films.map((option) => option.title)}
+        renderInput={(params) => (
+          <TextField {...params} label="search"  margin="normal" variant="outlined" />
+        )}
+      />
+        <Button className="search-button" component={Link} to="/search" onClick={() => console.log('test')} variant="contained" color="primary" >Search</Button>
+
+
+        {/* <input className="search-input" label="search" placeholder="search" /> */}
+{/*
         <Link className="search-button" onClick={this.clickHandlerSearch} to="/search">
           Search
-        </Link>
+        </Link> */}
       </form>
     );
   }
@@ -29,11 +47,15 @@ class Search extends React.Component {
 
 
 Search.propTypes = {
-  dispatch: func
+  dispatch: func,
+  films: object
 };
 
 const mapStateToProps = (state) => {
-  return state;
+  console.log('state', state.filmsReducer.items);
+  return {
+    films: state.filmsReducer.items
+  };
 };
 
 export default connect(mapStateToProps)(Search);
