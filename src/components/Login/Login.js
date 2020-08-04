@@ -3,7 +3,6 @@ import { GoogleLogin, GoogleLogout } from 'react-google-login';
 
 import './login.scss';
 
-
 const responseGoogle = (response) => {
   let { givenName, familyName, email, imageUrl } = response.profileObj;
 
@@ -20,8 +19,6 @@ const responseGoogle = (response) => {
 const logout = () => {
   localStorage.clear();
 };
-
-
 
 let Login = () => {
   const isData = localStorage.hasOwnProperty.call(Login, 'loginData');
@@ -60,6 +57,5 @@ let Login = () => {
     </div>
   );
 };
-
 
 export default Login;

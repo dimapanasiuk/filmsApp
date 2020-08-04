@@ -10,7 +10,6 @@ import NotFound from '../NotFound/NotFound';
 
 import './Board.scss';
 
-
 class Board extends React.Component {
   state = {
     films: [],
@@ -31,22 +30,22 @@ class Board extends React.Component {
   };
 
   render() {
-    const {films} = this.state;
+    const { films } = this.state;
 
     return (
       <div className="main-content">
-        <Header films={films}/>
+        <Header films={films} />
         <Switch>
           <Route exact path="/search">
-            <Search films={films}/>
+            <Search films={films} />
           </Route>
 
           <Route path="/categories">
-            <Categories films={films}/>
+            <Categories films={films} />
           </Route>
 
           <Route path="/categories/:category">
-            <Categories films={films}/>
+            <Categories films={films} />
           </Route>
 
           <Route path="/films/:about">
@@ -54,7 +53,7 @@ class Board extends React.Component {
           </Route>
 
           <Route exact path="/">
-            <Home films={films}/>
+            <Home films={films} />
           </Route>
 
           <Route component={NotFound} />
@@ -63,6 +62,5 @@ class Board extends React.Component {
     );
   }
 }
-
 
 export default Board;

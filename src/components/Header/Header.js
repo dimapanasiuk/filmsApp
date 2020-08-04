@@ -18,7 +18,6 @@ import Login from '../Login/Login';
 
 import './header.scss';
 
-
 const Header = ({ dispatch, films }) => {
   let resetChooseCategory = () => {
     dispatch(chooseCategory(''));
@@ -90,7 +89,6 @@ const Header = ({ dispatch, films }) => {
     </header>
   );
 };
-
 
 Header.propTypes = {
   dispatch: func,

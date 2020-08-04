@@ -3,10 +3,9 @@ import { arrayOf, string, func, object } from 'prop-types';
 import { v4 as uuid4 } from 'uuid';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import {Button} from '@material-ui/core';
+import { Button } from '@material-ui/core';
 
 import { chooseCategory } from '../../redux/categoryData/categoryDataActions';
-
 
 class NavBar extends React.Component {
   clickHandlerCategoryChoose = (e) => {
@@ -33,15 +32,9 @@ class NavBar extends React.Component {
   render() {
     let { list } = this.props;
 
-    return (
-      <div className="categories-content">
-        {/* <h1>Categories</h1> */}
-        {this.htmlData(list)}
-      </div>
-    );
+    return <div className="categories-content">{this.htmlData(list)}</div>;
   }
 }
-
 
 NavBar.propTypes = {
   list: arrayOf(string),

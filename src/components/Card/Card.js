@@ -9,8 +9,6 @@ import { starsParse, categoryParse } from '../../utils/utils';
 
 import './card.scss';
 
-// import { makeStyles } from '@material-ui/core/styles';
-
 import {
   Container,
   Card as CardStyle,
@@ -63,7 +61,7 @@ class Card extends React.Component {
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
-              <Link
+                <Link
                   onClick={this.clickHandlerGetFilmName}
                   to={`/films/${title}`}
                 >
@@ -81,65 +79,6 @@ class Card extends React.Component {
           </CardActionArea>
         </CardStyle>
       </Container>
-
-      // </Link>
-      //   <Link onClick={this.clickHandlerGetFilmName} to={`/films/${title}`}>
-      //     <h1 className='main-card_title'>{title}</h1>
-      //   </Link>
-
-      //   <div className='main-card_layout-content'>
-
-      //     <div className='main-card_layout-content-pic'>
-      //       <img alt={`${title} img`} src={smallPoster} />
-      //     </div>
-
-      //     <div className='main-card_layout-content-information'>
-
-      //       <div className='main-card_rating '>
-      //         <h4>Rating </h4>
-      //         <p>{topRating}</p>
-      //       </div>
-
-      //       <div className='main-card_duration'>
-      //         <h4>Duration</h4>
-      //         <p>{duration} m</p>
-      //       </div>
-
-      //       <div className='main-card_director'>
-      //         <h4>Director</h4>
-      //         <p>{director}</p>
-      //       </div>
-
-      //       <div className='main-card_release'>
-      //         <h4>Release</h4>
-      //         <p>{release}</p>
-      //       </div>
-
-      //       <div className='main-card_gross'>
-      //         <h4>Gross</h4>
-      //         <p>{gross}</p>
-      //       </div>
-
-      //       <div className='main-card_starts'>
-      //         <h4>Stars</h4>
-      //         {starsParse(stars)}
-      //       </div>
-
-      //       <div className='main-card_description'>
-      //         <h4>Description</h4>
-      //         <p>{description}</p>
-      //       </div>
-
-      //       <div className='main-card_categories'>
-      //         <h4>Categories</h4>
-      //         <div className='main-card_categories-wrapper'>
-      //           {categoryParse(categories, this.clickHandlerCategoryChoose)}
-      //         </div>
-      //       </div>
-
-      //     </div>
-      //   </div>
-      // </div>
     );
   }
 }

@@ -7,7 +7,6 @@ import Card from '../../components/Card/Card';
 
 import './categories.scss';
 
-
 class Categories extends React.Component {
   getCategories(films) {
     let allCategories = films.map((item) => item.categories).flat();
@@ -59,7 +58,6 @@ class Categories extends React.Component {
   }
 }
 
-
 Categories.propTypes = {
   dispatch: func,
   films: arrayOf(object),
@@ -67,7 +65,7 @@ Categories.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-   return {
+  return {
     categoryChoose: state.categoryDataReducer.category,
   };
 };

@@ -4,54 +4,51 @@ import { arrayOf, object, string } from 'prop-types';
 
 import Card from '../../components/Card/Card';
 
-
 class Search extends React.Component {
-
   searchMovieByKeyword(searchWord, films) {
-    const arr = films.filter(i => {
+    const arr = films.filter((i) => {
       let num = i.title.toUpperCase().indexOf(searchWord.toUpperCase());
       return num >= 0;
     });
 
-    return arr.map(i => <Card
-      key={i._id}
-      id={i._id}
-      title={i.title}
-      release={i.releaseYear}
-      categories={i.categories}
-      description={i.description}
-      director={i.director}
-      duration={i.duration}
-      gross={i.gross}
-      smallPoster={i.smallPoster}
-      stars={i.stars}
-      topRating={i.topRating}
-    />);
+    return arr.map((i) => (
+      <Card
+        key={i._id}
+        id={i._id}
+        title={i.title}
+        release={i.releaseYear}
+        categories={i.categories}
+        description={i.description}
+        director={i.director}
+        duration={i.duration}
+        gross={i.gross}
+        smallPoster={i.smallPoster}
+        stars={i.stars}
+        topRating={i.topRating}
+      />
+    ));
   }
 
   render() {
     const { films, searchData } = this.props;
 
     return (
-      <div className='search-wrapper'>
+      <div className="search-wrapper">
         {this.searchMovieByKeyword(searchData, films)}
       </div>
     );
   }
 }
 
-
 Search.propTypes = {
   films: arrayOf(object),
-  searchData: string
+  searchData: string,
 };
 
 const mapStateToProps = (state) => {
   return {
-    searchData: state.searchDataReducer.searchFilm
+    searchData: state.searchDataReducer.searchFilm,
   };
 };
 
 export default connect(mapStateToProps)(Search);
-
-
