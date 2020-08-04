@@ -7,16 +7,14 @@ import { starsParse, categoryParse } from '../../utils/utils';
 
 import './aboutFilm.scss';
 
-
 class AboutFilm extends React.Component {
-
   clickHandlerCategoryChoose = (e) => {
     let category = e.target.innerText;
     this.props.dispatch(chooseCategory(category));
-  }
+  };
 
   getFilmData = (arr, findItem) => {
-    return arr.find(i => i.title === findItem);
+    return arr.find((i) => i.title === findItem);
   };
 
   render() {
@@ -38,13 +36,12 @@ class AboutFilm extends React.Component {
     } = data;
 
     return (
-      <div className='about'>
-
-        <div className='about_pic'>
+      <div className="about">
+        <div className="about_pic">
           <img src={bigPoster} alt={filmName} />
         </div>
 
-        <div className='about_content'>
+        <div className="about_content">
           <h1>{filmName}</h1>
           <div>
             <h1>Duration{duration}</h1>
@@ -67,17 +64,16 @@ class AboutFilm extends React.Component {
   }
 }
 
-
 AboutFilm.propTypes = {
   film: objectOf(string),
   films: arrayOf(object),
-  dispatch: func
+  dispatch: func,
 };
 
 const mapStateToProps = (state) => {
   return {
     film: state.filmDataReducer,
-    films: state.filmsReducer.items
+    films: state.filmsReducer.items,
   };
 };
 

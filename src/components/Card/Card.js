@@ -8,7 +8,9 @@ import { chooseCategory } from '../../redux/categoryData/categoryDataActions';
 import { starsParse, categoryParse } from '../../utils/utils';
 
 import './card.scss';
-import { makeStyles } from '@material-ui/core/styles';
+
+// import { makeStyles } from '@material-ui/core/styles';
+
 import {
   Container,
   Card as CardStyle,
@@ -19,19 +21,17 @@ import {
   Typography,
 } from '@material-ui/core';
 
-
 class Card extends React.Component {
-
   clickHandlerCategoryChoose = (e) => {
     let category = e.target.innerText;
     this.props.dispatch(chooseCategory(category));
-  }
+  };
 
   clickHandlerGetFilmName = (e) => {
     const parent = e.target.parentNode;
     const parentName = parent.innerText;
     this.props.dispatch(clickOnFilm(parentName));
-  }
+  };
 
   render() {
     const {
@@ -48,9 +48,11 @@ class Card extends React.Component {
       topRating,
     } = this.props;
     return (
-      <Container maxWidth='xl' style={{ marginBottom: '20px' }}>
+      <Container maxWidth="xl" style={{ marginBottom: '20px' }}>
         <CardStyle>
-          <CardActionArea style={{ display: 'flex', justifyContent: "flex-start" }}>
+          <CardActionArea
+            style={{ display: 'flex', justifyContent: 'flex-start' }}
+          >
             <CardMedia
               style={{ height: '100%', width: 'auto' }}
               component="img"
@@ -60,24 +62,27 @@ class Card extends React.Component {
               title="Contemplative Reptile"
             />
             <CardContent>
-
               <Typography gutterBottom variant="h5" component="h2">
-                Lizard
+              <Link
+                  onClick={this.clickHandlerGetFilmName}
+                  to={`/films/${title}`}
+                >
+                  {title}
+                </Link>
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
-                Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                across all continents except Antarctica
-          </Typography>
+                Lizards are a widespread group of squamate reptiles, with over
+                6,000 species, ranging across all continents except Antarctica
+              </Typography>
               <CardActions>
                 {categoryParse(categories, this.clickHandlerCategoryChoose)}
               </CardActions>
             </CardContent>
-
           </CardActionArea>
-
         </CardStyle>
       </Container>
 
+      // </Link>
       //   <Link onClick={this.clickHandlerGetFilmName} to={`/films/${title}`}>
       //     <h1 className='main-card_title'>{title}</h1>
       //   </Link>
@@ -120,12 +125,10 @@ class Card extends React.Component {
       //         {starsParse(stars)}
       //       </div>
 
-
       //       <div className='main-card_description'>
       //         <h4>Description</h4>
       //         <p>{description}</p>
       //       </div>
-
 
       //       <div className='main-card_categories'>
       //         <h4>Categories</h4>
@@ -140,7 +143,6 @@ class Card extends React.Component {
     );
   }
 }
-
 
 Card.propTypes = {
   title: string,
