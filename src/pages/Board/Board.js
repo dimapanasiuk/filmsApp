@@ -50,7 +50,7 @@ class Board extends React.Component {
           </Route>
 
           <Route path="/films/:about">
-            <AboutFilm />
+            <AboutFilm films={films} />
           </Route>
 
           <Route path="/login">

@@ -73,7 +73,6 @@ AboutFilm.propTypes = {
 const mapStateToProps = (state) => {
   return {
     film: state.filmDataReducer,
-    films: state.filmsReducer.items,
   };
 };
 
