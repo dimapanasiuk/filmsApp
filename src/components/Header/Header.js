@@ -2,13 +2,23 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { func, array } from 'prop-types';
-import { Button, Container, Paper, Tabs, Tab } from '@material-ui/core';
+import {
+  Button,
+  Container,
+  Paper,
+  Tabs,
+  Tab,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+} from '@material-ui/core';
 
 import { chooseCategory } from '../../redux/categoryData/categoryDataActions';
 import Search from '../Search/Search';
+import Login from '../Login/Login';
 
 import './header.scss';
-
 
 const Header = ({ dispatch, films }) => {
   let resetChooseCategory = () => {
@@ -16,6 +26,15 @@ const Header = ({ dispatch, films }) => {
   };
 
   const [value, setValue] = React.useState(0);
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -49,15 +68,28 @@ const Header = ({ dispatch, films }) => {
                 <Search films={films} foo={handleChangeReset} />
               </li>
               <li>
-                <Button variant="contained" color="primary" p={100}>
-                  <Link
-                    to="/login"
-                    className="login-button"
-                    onClick={() => setValue(3)}
+                <div>
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    onClick={handleClickOpen}
                   >
                     Login
-                  </Link>
-                </Button>
+                  </Button>
+                  <Dialog
+                    open={open}
+                    onClose={handleClose}
+                  >
+                    <DialogContent>
+                      <Login />
+                    </DialogContent>
+                    <DialogActions>
+                      <Button onClick={handleClose} color="primary">
+                        Close
+                      </Button>
+                    </DialogActions>
+                  </Dialog>
+                </div>
               </li>
             </ul>
           </nav>
@@ -66,7 +98,6 @@ const Header = ({ dispatch, films }) => {
     </header>
   );
 };
-
 
 Header.propTypes = {
   dispatch: func,
