@@ -48,7 +48,6 @@ class Categories extends React.Component {
       <div className="categories">
         <div className="categories-navbar">
           <div className="categories-navbar_wrapper">
-            <h2>Categories</h2>
             <NavBar list={categories} />
           </div>
         </div>
