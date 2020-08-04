@@ -8,8 +8,6 @@ import Home from '../Home/Home';
 import AboutFilm from '../AboutFilm/AboutFilm';
 import NotFound from '../NotFound/NotFound';
 
-import './Board.scss';
-
 class Board extends React.Component {
   state = {
     films: [],
