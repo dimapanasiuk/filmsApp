@@ -11,6 +11,7 @@ class NavBar extends React.Component {
 
   clickHandlerCategoryChoose = (e) => {
     let category = e.target.innerText;
+    console.log('category', category);
     this.props.dispatch(chooseCategory(category));
   }
 

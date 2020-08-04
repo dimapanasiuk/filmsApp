@@ -52,7 +52,6 @@ Search.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  console.log('state', state.filmsReducer.items);
   return {
     films: state.filmsReducer.items
   };
