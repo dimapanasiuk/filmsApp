@@ -1,59 +1,82 @@
-import React from "react";
+import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import { func, object } from 'prop-types';
 
 import { searchFilm } from '../../redux/searchData/searchDataActions';
 
 import './search.scss';
-import {TextField, Button} from '@material-ui/core';
+import { TextField, Button } from '@material-ui/core';
 import { Autocomplete } from '@material-ui/lab';
 
-
 class Search extends React.Component {
+  state = {
+    searchData: '',
+  };
 
-  clickHandlerSearch = (e) => {
-    const searchData = e.target.previousElementSibling.value;
+  clickHandlerSearch = () => {
+    const { searchData } = this.state;
     this.props.dispatch(searchFilm(searchData));
-  }
+  };
+
+  changeHandler = (e) => {
+    this.setState({ searchData: e.t });
+
+    const autoComplete = e.target.innerText;
+    const textField = e.target.value;
+
+    if (autoComplete) {
+      this.setState({ searchData: autoComplete });
+      return;
+    } else {
+      this.setState({ searchData: textField });
+    }
+  };
 
   render() {
-    let {films} = this.props;
+    let { films } = this.props;
 
     return (
       <form className="search">
-    <Autocomplete
-        style={{ width: 300 }}
-        id="free-solo-demo"
-        freeSolo
-        onChange = {(e) => console.log(e.target.innerText) }
-        options={films.map((option) => option.title)}
-        renderInput={(params) => (
-          <TextField {...params} label="search"  margin="normal" variant="outlined" />
-        )}
-      />
-        <Button className="search-button" component={Link} to="/search" onClick={() => console.log('test')} variant="contained" color="primary" >Search</Button>
-
-
-        {/* <input className="search-input" label="search" placeholder="search" /> */}
-{/*
-        <Link className="search-button" onClick={this.clickHandlerSearch} to="/search">
+        <Autocomplete
+          style={{ width: 300 }}
+          id="free-solo-demo"
+          freeSolo
+          onChange={this.changeHandler}
+          options={films.map((option) => option.title)}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label="search"
+              onChange={this.changeHandler}
+              margin="normal"
+              variant="outlined"
+            />
+          )}
+        />
+        <Button
+          className="search-button"
+          component={Link}
+          to="/search"
+          onClick={this.clickHandlerSearch}
+          variant="contained"
+          color="primary"
+        >
           Search
-        </Link> */}
+        </Button>
       </form>
     );
   }
 }
 
-
 Search.propTypes = {
   dispatch: func,
-  films: object
+  films: object,
 };
 
 const mapStateToProps = (state) => {
   return {
-    films: state.filmsReducer.items
+    films: state.filmsReducer.items,
   };
 };
 
