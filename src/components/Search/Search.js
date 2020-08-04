@@ -46,8 +46,8 @@ class Search extends React.Component {
           options={films.map((option) => option.title)}
           renderInput={(params) => (
             <TextField
-            className='test'
-            {...params}
+              className="test"
+              {...params}
               label="search"
               onChange={this.changeHandler}
               margin="normal"
@@ -75,7 +75,7 @@ class Search extends React.Component {
 Search.propTypes = {
   dispatch: func,
   films: object,
-  foo: func
+  foo: func,
 };
 
 const mapStateToProps = (state) => {

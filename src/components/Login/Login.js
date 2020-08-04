@@ -1,15 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 
-import {
-  Dialog,
-  Button,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-} from '@material-ui/core';
-
 import './login.scss';
+
 
 const responseGoogle = (response) => {
   let { givenName, familyName, email, imageUrl } = response.profileObj;
@@ -28,8 +21,10 @@ const logout = () => {
   localStorage.clear();
 };
 
+
+
 let Login = () => {
-  const isData = localStorage.hasOwnProperty('loginData');
+  const isData = localStorage.hasOwnProperty.call(Login, 'loginData');
   let loginContent;
 
   if (isData) {
@@ -61,8 +56,10 @@ let Login = () => {
   return (
     <div className="login">
       <h1>Content</h1>
+      {loginContent}
     </div>
   );
 };
+
 
 export default Login;

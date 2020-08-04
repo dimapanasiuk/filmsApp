@@ -18,6 +18,7 @@ import Login from '../Login/Login';
 
 import './header.scss';
 
+
 const Header = ({ dispatch, films }) => {
   let resetChooseCategory = () => {
     dispatch(chooseCategory(''));
@@ -66,7 +67,13 @@ const Header = ({ dispatch, films }) => {
                 <Search films={films} foo={handleChangeReset} />
               </li>
               <li>
-                <Button onClick={handleClickOpen}>Login</Button>
+                <Button
+                  onClick={handleClickOpen}
+                  color="primary"
+                  variant="outlined"
+                >
+                  Login
+                </Button>
                 <Dialog open={open} onClose={handleClose}>
                   <DialogContent>
                     <Login />
@@ -83,6 +90,7 @@ const Header = ({ dispatch, films }) => {
     </header>
   );
 };
+
 
 Header.propTypes = {
   dispatch: func,
