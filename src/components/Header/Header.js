@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { func } from 'prop-types';
+import { func, array } from 'prop-types';
 
 
 import { chooseCategory } from '../../redux/categoryData/categoryDataActions';
@@ -11,7 +11,7 @@ import './header.scss';
 import { Button, Container, Paper, Tabs, Tab } from '@material-ui/core';
 
 
-const Header = ({ dispatch }) => {
+const Header = ({ dispatch, films }) => {
 
   let resetChooseCategory = () => {
     dispatch(chooseCategory(''));
@@ -35,12 +35,12 @@ const Header = ({ dispatch }) => {
               indicatorColor="primary"
             >
               <Tab value={0} label='Home' to='/' component={NavLink} />
-              <Tab value={1} label='Catalog' to='/categories' component={NavLink} />
+              <Tab value={1} label='Catalog' to='/categories' component={NavLink} onClick={resetChooseCategory} />
             </Tabs>
             <ul className="main-header-right-block">
-              <li><Search /></li>
+              <li><Search films={films} /></li>
               <li>
-                <Button variant="contained" color="primary" p={10}>
+                <Button variant="contained" color="primary" p={100}>
                   <Link to='/login' className='login-button'>Login</Link>
                 </Button>
               </li>
@@ -81,6 +81,7 @@ const Header = ({ dispatch }) => {
 
 Header.propTypes = {
   dispatch: func,
+  films: array
 };
 
 const mapStateToProps = (state) => {

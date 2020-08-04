@@ -1,6 +1,5 @@
 import React from 'react';
 import Card from '../../components/Card/Card';
-import { connect } from 'react-redux';
 import { array } from 'prop-types';
 
 import './home.scss';
@@ -32,13 +31,5 @@ Home.propTypes = {
   films: array
 };
 
-const mapStateToProps = (state) => {
-  return {
-    films: state.filmsReducer.items,
-    loading: state.filmsReducer.loading,
-    error: state.filmsReducer.error,
-  };
-};
-
-export default connect(mapStateToProps)(Home);
+export default Home;
 

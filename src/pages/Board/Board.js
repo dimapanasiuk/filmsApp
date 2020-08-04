@@ -1,9 +1,6 @@
 import React from 'react';
-import { Switch, Route } from "react-router-dom";
-import { func } from 'prop-types';
-import { connect } from "react-redux";
+import { Switch, Route } from 'react-router-dom';
 
-import { fetchFilms } from '../../redux/getFilmsData/filmsActions';
 import Header from '../../components/Header/Header';
 import Categories from '../Categories/Categories';
 import Search from '../Search/Search';
@@ -14,29 +11,42 @@ import NotFound from '../NotFound/NotFound';
 
 import './Board.scss';
 
-
 class Board extends React.Component {
+  state = {
+    films: [],
+  };
 
-  componentDidMount() {
-    this.props.dispatch(fetchFilms());
-  }
+  componentDidMount = () => {
+    fetch('https://filmsapi.herokuapp.com/films').then((response) =>
+      response
+        .json()
+        .then((data) => {
+          this.setState({
+            films: data.message,
+          });
+        })
+        .catch(console.error)
+    );
+    return null;
+  };
 
   render() {
+    const {films} = this.state;
+
     return (
       <div className="main-content">
-        <Header />
+        <Header films={films}/>
         <Switch>
-
           <Route exact path="/search">
-            <Search />
+            <Search films={films}/>
           </Route>
 
           <Route path="/categories">
-            <Categories />
+            <Categories films={films}/>
           </Route>
 
           <Route path="/categories/:category">
-            <Categories />
+            <Categories films={films}/>
           </Route>
 
           <Route path="/films/:about">
@@ -48,7 +58,7 @@ class Board extends React.Component {
           </Route>
 
           <Route exact path="/">
-            <Home />
+            <Home films={films}/>
           </Route>
 
           <Route component={NotFound} />
@@ -58,17 +68,4 @@ class Board extends React.Component {
   }
 }
 
-Board.propTypes = {
-  dispatch: func
-};
-
-const mapStateToProps = (state) => {
-  return {
-    films: state.filmsReducer.items,
-    loading: state.filmsReducer.loading,
-    error: state.filmsReducer.error,
-  };
-};
-
-export default connect(mapStateToProps)(Board);
-
+export default Board;

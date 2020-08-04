@@ -75,9 +75,7 @@ Search.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  return {
-    films: state.filmsReducer.items,
-  };
+  return state;
 };
 
 export default connect(mapStateToProps)(Search);

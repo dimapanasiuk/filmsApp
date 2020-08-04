@@ -67,10 +67,10 @@ Categories.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  return {
-    films: state.filmsReducer.items,
-    categoryChoose: state.categoryDataReducer.category,
-  };
+  return state;
+  //  {
+  //   categoryChoose: state.categoryDataReducer.category,
+  // };
 };
 
 export default connect(mapStateToProps)(Categories);
