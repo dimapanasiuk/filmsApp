@@ -3,16 +3,13 @@ import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { func, array } from 'prop-types';
 
-
 import { chooseCategory } from '../../redux/categoryData/categoryDataActions';
 import Search from '../Search/Search';
 
 import './header.scss';
 import { Button, Container, Paper, Tabs, Tab } from '@material-ui/core';
 
-
 const Header = ({ dispatch, films }) => {
-
   let resetChooseCategory = () => {
     dispatch(chooseCategory(''));
   };
@@ -23,65 +20,55 @@ const Header = ({ dispatch, films }) => {
     setValue(newValue);
   };
 
+  let handleChangeReset = () => {
+    setValue(3);
+  };
 
   return (
     <header>
       <Paper>
-        <Container maxWidth='xl' className='header-layout'>
-          <nav className='header-navigation'>
+        <Container maxWidth="xl" className="header-layout">
+          <nav className="header-navigation">
             <Tabs
               onChange={handleChange}
               value={value}
               indicatorColor="primary"
             >
-              <Tab value={0} label='Home' to='/' component={NavLink} />
-              <Tab value={1} label='Catalog' to='/categories' component={NavLink} onClick={resetChooseCategory} />
+              <Tab value={0} label="Home" to="/" component={NavLink} />
+              <Tab
+                value={1}
+                label="Catalog"
+                to="/categories"
+                component={NavLink}
+                onClick={resetChooseCategory}
+              />
             </Tabs>
             <ul className="main-header-right-block">
-              <li><Search films={films} /></li>
+              <li>
+                <Search films={films} foo={handleChangeReset} />
+              </li>
               <li>
                 <Button variant="contained" color="primary" p={100}>
-                  <Link to='/login' className='login-button'>Login</Link>
+                  <Link
+                    to="/login"
+                    className="login-button"
+                    onClick={() => setValue(3)}
+                  >
+                    Login
+                  </Link>
                 </Button>
               </li>
             </ul>
           </nav>
         </Container>
       </Paper>
-
-
-      {/* <nav className='header-navigation'>
-          <ul className="main-header-left-block">
-            <li>
-              <NavLink exact to="/"
-                className='header-navigation_default-button'
-              >Home</NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/categories"
-                className='header-navigation_default-button'
-                onClick={resetChooseCategory}
-              >Categories</NavLink>
-            </li>
-          </ul>
-          <ul className="main-header-right-block">
-            <li><Search /></li>
-            <li>
-              <Button variant="contained" color="primary">
-                <Link to='/login' className='login-button'>Login</Link>
-              </Button>
-            </li>
-          </ul>
-        </nav> */}
-    </header >
+    </header>
   );
 };
 
-
 Header.propTypes = {
   dispatch: func,
-  films: array
+  films: array,
 };
 
 const mapStateToProps = (state) => {
@@ -89,4 +76,3 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps)(Header);
-

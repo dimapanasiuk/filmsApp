@@ -34,7 +34,7 @@ class Search extends React.Component {
   };
 
   render() {
-    let { films } = this.props;
+    let { films, foo } = this.props;
 
     return (
       <form className="search">
@@ -58,7 +58,9 @@ class Search extends React.Component {
           className="search-button"
           component={Link}
           to="/search"
-          onClick={this.clickHandlerSearch}
+          onClick={() => {
+            this.clickHandlerSearch(), foo();
+          }}
           variant="contained"
           color="primary"
         >
@@ -72,6 +74,7 @@ class Search extends React.Component {
 Search.propTypes = {
   dispatch: func,
   films: object,
+  foo: func
 };
 
 const mapStateToProps = (state) => {
