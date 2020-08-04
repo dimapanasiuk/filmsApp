@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { func, array } from 'prop-types';
 import {
@@ -9,9 +9,7 @@ import {
   Tabs,
   Tab,
   Dialog,
-  DialogActions,
   DialogContent,
-  DialogTitle,
 } from '@material-ui/core';
 
 import { chooseCategory } from '../../redux/categoryData/categoryDataActions';
@@ -68,28 +66,15 @@ const Header = ({ dispatch, films }) => {
                 <Search films={films} foo={handleChangeReset} />
               </li>
               <li>
-                <div>
-                  <Button
-                    variant="outlined"
-                    color="primary"
-                    onClick={handleClickOpen}
-                  >
-                    Login
+                <Button onClick={handleClickOpen}>Login</Button>
+                <Dialog open={open} onClose={handleClose}>
+                  <DialogContent>
+                    <Login />
+                  </DialogContent>
+                  <Button onClick={handleClose} color="primary">
+                    Close
                   </Button>
-                  <Dialog
-                    open={open}
-                    onClose={handleClose}
-                  >
-                    <DialogContent>
-                      <Login />
-                    </DialogContent>
-                    <DialogActions>
-                      <Button onClick={handleClose} color="primary">
-                        Close
-                      </Button>
-                    </DialogActions>
-                  </Dialog>
-                </div>
+                </Dialog>
               </li>
             </ul>
           </nav>

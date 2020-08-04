@@ -46,7 +46,8 @@ class Search extends React.Component {
           options={films.map((option) => option.title)}
           renderInput={(params) => (
             <TextField
-              {...params}
+            className='test'
+            {...params}
               label="search"
               onChange={this.changeHandler}
               margin="normal"
