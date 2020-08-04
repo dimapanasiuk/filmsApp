@@ -11,6 +11,7 @@ import NotFound from '../NotFound/NotFound';
 
 import './Board.scss';
 
+
 class Board extends React.Component {
   state = {
     films: [],
@@ -67,5 +68,6 @@ class Board extends React.Component {
     );
   }
 }
+
 
 export default Board;

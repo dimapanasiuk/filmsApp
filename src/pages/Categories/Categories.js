@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
 import { func, arrayOf, object, string } from 'prop-types';
-
-import './categories.scss';
 
 import NavBar from '../../components/NavBar/NavBar';
 import Card from '../../components/Card/Card';
+
+import './categories.scss';
+
 
 class Categories extends React.Component {
   getCategories(films) {
@@ -42,9 +42,6 @@ class Categories extends React.Component {
 
   render() {
     let { films, categoryChoose } = this.props;
-    console.log('films', films);
-    console.log('categoryChoose', categoryChoose);
-
 
     let categories = this.getCategories(films);
     return (
@@ -62,6 +59,7 @@ class Categories extends React.Component {
     );
   }
 }
+
 
 Categories.propTypes = {
   dispatch: func,

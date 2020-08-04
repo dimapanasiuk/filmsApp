@@ -2,12 +2,13 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { func, array } from 'prop-types';
+import { Button, Container, Paper, Tabs, Tab } from '@material-ui/core';
 
 import { chooseCategory } from '../../redux/categoryData/categoryDataActions';
 import Search from '../Search/Search';
 
 import './header.scss';
-import { Button, Container, Paper, Tabs, Tab } from '@material-ui/core';
+
 
 const Header = ({ dispatch, films }) => {
   let resetChooseCategory = () => {
@@ -65,6 +66,7 @@ const Header = ({ dispatch, films }) => {
     </header>
   );
 };
+
 
 Header.propTypes = {
   dispatch: func,

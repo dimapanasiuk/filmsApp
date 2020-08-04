@@ -1,10 +1,9 @@
 import React from 'react';
-
 import { connect } from 'react-redux';
-
 import { arrayOf, object, string } from 'prop-types';
 
 import Card from '../../components/Card/Card';
+
 
 class Search extends React.Component {
 
@@ -40,6 +39,7 @@ class Search extends React.Component {
     );
   }
 }
+
 
 Search.propTypes = {
   films: arrayOf(object),

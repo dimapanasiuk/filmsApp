@@ -7,6 +7,7 @@ import { starsParse, categoryParse } from '../../utils/utils';
 
 import './aboutFilm.scss';
 
+
 class AboutFilm extends React.Component {
   clickHandlerCategoryChoose = (e) => {
     let category = e.target.innerText;
@@ -63,6 +64,7 @@ class AboutFilm extends React.Component {
     );
   }
 }
+
 
 AboutFilm.propTypes = {
   film: objectOf(string),
