@@ -42,6 +42,9 @@ class Categories extends React.Component {
 
   render() {
     let { films, categoryChoose } = this.props;
+    console.log('films', films);
+    console.log('categoryChoose', categoryChoose);
+
 
     let categories = this.getCategories(films);
     return (
@@ -67,10 +70,9 @@ Categories.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  return state;
-  //  {
-  //   categoryChoose: state.categoryDataReducer.category,
-  // };
+   return {
+    categoryChoose: state.categoryDataReducer.category,
+  };
 };
 
 export default connect(mapStateToProps)(Categories);
