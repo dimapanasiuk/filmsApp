@@ -12,7 +12,7 @@ import './categories.scss';
 
 class Categories extends React.Component {
   state = {
-    currentPage: 0,
+    currentPage: 1,
   };
 
   handleChangePage = (e, value) => {
@@ -56,25 +56,33 @@ class Categories extends React.Component {
     const { films, categoryChoose } = this.props;
     const { currentPage } = this.state;
 
-    let filmsContent = showFilms(films, currentPage);
+    const categoryFilms = this.searchMovieByKeyword(categoryChoose, films);
 
-    let categories = this.getCategories(films);
+    const pages = Math.floor(categoryFilms.length / 10 - 1);
+
+    const content = showFilms(categoryFilms, currentPage - 1);
+
     return (
       <div className="categories">
         <div className="categories-navbar">
           <div className="categories-navbar_wrapper">
-            <NavBar list={categories} />
+            <NavBar list={this.getCategories(films)} />
           </div>
         </div>
         <div className="categories-content">
-          {this.searchMovieByKeyword(categoryChoose, filmsContent)}
-          <Pagination
-            count={films.length / 10 - 1}
-            page={currentPage}
-            onChange={this.handleChangePage}
-            variant="outlined"
-            shape="rounded"
-          />
+          {content}
+          {(() => {
+            if (pages > 1)
+              return (
+                <Pagination
+                  count={pages}
+                  page={currentPage}
+                  onChange={this.handleChangePage}
+                  variant="outlined"
+                  shape="rounded"
+                />
+              );
+          })()}
         </div>
       </div>
     );

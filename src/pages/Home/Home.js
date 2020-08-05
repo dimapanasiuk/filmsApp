@@ -15,7 +15,7 @@ const Home = ({ films }) => {
     setPage(value);
   };
 
-  let currentContent = showFilms(films, currentPage-1);
+  let currentContent = showFilms(films, currentPage - 1);
 
   let filmsHtml = currentContent.map((i) => (
     <Card
@@ -38,7 +38,7 @@ const Home = ({ films }) => {
     <>
       <div className="home-wrapper">{filmsHtml}</div>
       <Pagination
-        count={films.length / 10 - 1}
+        count={Math.floor(films.length / 10 - 1)}
         page={currentPage}
         onChange={handleChangePage}
         variant="outlined"
