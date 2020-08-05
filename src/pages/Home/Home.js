@@ -9,13 +9,13 @@ import Pagination from '@material-ui/lab/Pagination';
 import './home.scss';
 
 const Home = ({ films }) => {
-  const [currentPage, setPage] = useState(0);
+  const [currentPage, setPage] = useState(1);
 
   const handleChangePage = (event, value) => {
     setPage(value);
   };
 
-  let currentContent = showFilms(films, currentPage);
+  let currentContent = showFilms(films, currentPage-1);
 
   let filmsHtml = currentContent.map((i) => (
     <Card
