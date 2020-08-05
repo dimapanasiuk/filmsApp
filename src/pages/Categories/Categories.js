@@ -82,7 +82,7 @@ class Categories extends React.Component {
           {(() => {
             if (pages > 1)
               return (
-                <Pagination
+                <Pagination className='pagination'
                   count={pages}
                   page={currentPage}
                   onChange={this.handleChangePage}
