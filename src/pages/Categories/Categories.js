@@ -4,10 +4,23 @@ import { func, arrayOf, object, string } from 'prop-types';
 
 import NavBar from '../../components/NavBar/NavBar';
 import Card from '../../components/Card/Card';
+import { showFilms } from '../../utils/utils';
+
+import Pagination from '@material-ui/lab/Pagination';
 
 import './categories.scss';
 
 class Categories extends React.Component {
+  state = {
+    currentPage: 0,
+  };
+
+  handleChangePage = (e, value) => {
+    this.setState({
+      currentPage: value,
+    });
+  };
+
   getCategories(films) {
     let allCategories = films.map((item) => item.categories).flat();
     return allCategories.filter((item, i, arr) => arr.indexOf(item) === i);
@@ -40,7 +53,10 @@ class Categories extends React.Component {
   };
 
   render() {
-    let { films, categoryChoose } = this.props;
+    const { films, categoryChoose } = this.props;
+    const { currentPage } = this.state;
+
+    let filmsContent = showFilms(films, currentPage);
 
     let categories = this.getCategories(films);
     return (
@@ -51,7 +67,14 @@ class Categories extends React.Component {
           </div>
         </div>
         <div className="categories-content">
-          {this.searchMovieByKeyword(categoryChoose, films)}
+          {this.searchMovieByKeyword(categoryChoose, filmsContent)}
+          <Pagination
+            count={films.length / 10 - 1}
+            page={currentPage}
+            onChange={this.handleChangePage}
+            variant="outlined"
+            shape="rounded"
+          />
         </div>
       </div>
     );
@@ -61,6 +84,7 @@ class Categories extends React.Component {
 Categories.propTypes = {
   dispatch: func,
   films: arrayOf(object),
+  allFilms: arrayOf(object),
   categoryChoose: string,
 };
 

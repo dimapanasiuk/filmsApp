@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from '../../components/Card/Card';
 import { array } from 'prop-types';
+
+import { showFilms } from '../../utils/utils';
+
+import Pagination from '@material-ui/lab/Pagination';
 
 import './home.scss';
 
 const Home = ({ films }) => {
-  let filmsHtml = films.map((i) => (
+  const [currentPage, setPage] = useState(0);
+
+  const handleChangePage = (event, value) => {
+    setPage(value);
+  };
+
+  let currentContent = showFilms(films, currentPage);
+
+  let filmsHtml = currentContent.map((i) => (
     <Card
       key={i._id}
       id={i._id}
@@ -22,7 +34,18 @@ const Home = ({ films }) => {
     />
   ));
 
-  return <div className="home-wrapper">{filmsHtml}</div>;
+  return (
+    <>
+      <div className="home-wrapper">{filmsHtml}</div>
+      <Pagination
+        count={films.length / 10 - 1}
+        page={currentPage}
+        onChange={handleChangePage}
+        variant="outlined"
+        shape="rounded"
+      />
+    </>
+  );
 };
 
 Home.propTypes = {
