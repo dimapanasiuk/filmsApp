@@ -1,6 +1,9 @@
 import React from 'react';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 
+import Image from 'material-ui-image';
+import { Typography } from '@material-ui/core';
+
 import './login.scss';
 
 const responseGoogle = (response) => {
@@ -21,16 +24,22 @@ const logout = () => {
 };
 
 let Login = () => {
-  const isData = localStorage.hasOwnProperty.call(Login, 'loginData');
+  const isData = localStorage.hasOwnProperty('loginData');
   let loginContent;
 
   if (isData) {
     const content = JSON.parse(localStorage.loginData);
 
     loginContent = (
-      <div>
-        <h1>{content.name}</h1>
-        <img src={content.image} alt="avatar" />
+      <div className="login-content">
+        <Image
+          src={content.image}
+          imageStyle={{ width: 'auto', height: 'auto' }}
+          disableSpinner
+        />
+        <Typography variant="h6" gutterBottom>
+          Hello {content.name} we can watch category
+        </Typography>
         <GoogleLogout
           clientId="218192214311-q84kv5i8v4lt8o4p27aa5c7lbqj2lruv.apps.googleusercontent.com"
           buttonText="Logout"
@@ -40,22 +49,22 @@ let Login = () => {
     );
   } else {
     loginContent = (
-      <GoogleLogin
-        clientId="218192214311-q84kv5i8v4lt8o4p27aa5c7lbqj2lruv.apps.googleusercontent.com"
-        buttonText="Login"
-        onSuccess={responseGoogle}
-        onFailure={responseGoogle}
-        cookiePolicy={'single_host_origin'}
-      />
+      <div className="login-content">
+        <Typography variant="h6" gutterBottom>
+          login to see more
+        </Typography>
+        <GoogleLogin
+          clientId="218192214311-q84kv5i8v4lt8o4p27aa5c7lbqj2lruv.apps.googleusercontent.com"
+          buttonText="Login"
+          onSuccess={responseGoogle}
+          onFailure={responseGoogle}
+          cookiePolicy={'single_host_origin'}
+        />
+      </div>
     );
   }
 
-  return (
-    <div className="login">
-      <h1>Content</h1>
-      {loginContent}
-    </div>
-  );
+  return <div className="login">{loginContent}</div>;
 };
 
 export default Login;

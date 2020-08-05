@@ -39,6 +39,7 @@
     "html-webpack-plugin": "^4.3.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.1.0",
+    "material-ui-image": "^3.2.3",
     "prettier": "^2.0.5",
     "prop-types": "^15.7.2",
     "react-redux": "^7.2.0",
