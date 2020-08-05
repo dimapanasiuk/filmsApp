@@ -13,6 +13,7 @@ import './categories.scss';
 class Categories extends React.Component {
   state = {
     currentPage: 1,
+    date: '',
   };
 
   handleChangePage = (e, value) => {
@@ -52,6 +53,10 @@ class Categories extends React.Component {
     ));
   };
 
+  resetPagination = () => {
+    this.setState({currentPage: 1});
+  };
+
   render() {
     const { films, categoryChoose } = this.props;
     const { currentPage } = this.state;
@@ -66,7 +71,10 @@ class Categories extends React.Component {
       <div className="categories">
         <div className="categories-navbar">
           <div className="categories-navbar_wrapper">
-            <NavBar list={this.getCategories(films)} />
+            <NavBar
+              list={this.getCategories(films)}
+              resetPagination={this.resetPagination}
+            />
           </div>
         </div>
         <div className="categories-content">
