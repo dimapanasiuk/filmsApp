@@ -3,15 +3,10 @@ import { connect } from 'react-redux';
 import { arrayOf, object, string } from 'prop-types';
 
 import Card from '../../components/Card/Card';
-// import { showFilms } from '../../utils/utils';
 
-import Pagination from '@material-ui/lab/Pagination';
+import './search.scss';
 
 class Search extends React.Component {
-  state = {
-    currentPage: 0,
-  };
-
   handleChangePage = (e, value) => {
     this.setState({
       currentPage: value,
@@ -44,20 +39,10 @@ class Search extends React.Component {
 
   render() {
     const { films, searchData } = this.props;
-    const { currentPage } = this.state;
-
-    //const filmsContent = showFilms(films, currentPage);
 
     return (
       <div className="search-wrapper">
         {this.searchMovieByKeyword(searchData, films)}
-        <Pagination
-            count={films.length / 10 - 1}
-            page={currentPage}
-            onChange={this.handleChangePage}
-            variant="outlined"
-            shape="rounded"
-          />
       </div>
     );
   }

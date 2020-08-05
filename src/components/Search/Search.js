@@ -39,20 +39,21 @@ class Search extends React.Component {
     return (
       <form className="search">
         <Autocomplete
-          style={{ width: 300 }}
-          id="free-solo-demo"
-          freeSolo
+          id="custom-input-demo"
           onChange={this.changeHandler}
           options={films.map((option) => option.title)}
           renderInput={(params) => (
-            <TextField
-              className="test"
-              {...params}
-              label="search"
-              onChange={this.changeHandler}
-              margin="normal"
-              variant="outlined"
-            />
+            <div ref={params.InputProps.ref}>
+              <TextField
+                size="small"
+                variant="outlined"
+                style={{ width: 200 }}
+                onChange={this.changeHandler}
+                label="Search"
+                type="text"
+                {...params.inputProps}
+              />
+            </div>
           )}
         />
         <Button

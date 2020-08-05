@@ -55,7 +55,7 @@ const Header = ({ dispatch, films }) => {
               <Tab value={0} label="Home" to="/" component={NavLink} />
               <Tab
                 value={1}
-                label="Catalog"
+                label="Categories"
                 to="/categories"
                 component={NavLink}
                 onClick={resetChooseCategory}
