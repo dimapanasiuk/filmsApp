@@ -39,7 +39,7 @@ const Header = ({ dispatch, films }) => {
   };
 
   let handleChangeReset = () => {
-    setValue(3);
+    setValue('');
   };
 
   return (

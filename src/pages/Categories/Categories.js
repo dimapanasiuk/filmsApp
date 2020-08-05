@@ -86,7 +86,6 @@ class Categories extends React.Component {
                   count={pages}
                   page={currentPage}
                   onChange={this.handleChangePage}
-                  variant="outlined"
                   shape="rounded"
                 />
               );

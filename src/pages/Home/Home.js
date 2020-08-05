@@ -41,7 +41,6 @@ const Home = ({ films }) => {
         count={Math.floor(films.length / 10 - 1)}
         page={currentPage}
         onChange={handleChangePage}
-        variant="outlined"
         shape="rounded"
       />
     </>
