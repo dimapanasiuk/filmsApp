@@ -8,17 +8,16 @@ import { chooseCategory } from '../../redux/categoryData/categoryDataActions';
 import { starsParse, categoryParse } from '../../utils/utils';
 
 import Image from 'material-ui-image';
-
-import './card.scss';
-
 import {
   Container,
   Card as CardStyle,
-  CardActionArea,
   CardActions,
   CardContent,
   Typography,
+  Paper,
 } from '@material-ui/core';
+
+import './card.scss';
 
 class Card extends React.Component {
   clickHandlerCategoryChoose = (e) => {
@@ -49,33 +48,72 @@ class Card extends React.Component {
     return (
       <Container maxWidth="xl" style={{ marginBottom: '20px' }}>
         <CardStyle>
-          <CardActionArea
-            style={{ display: 'flex', justifyContent: 'flex-start' }}
-          >
+          <div className="card_content">
             <div className="card_img-container">
-              <Image
-                src={smallPoster}
-                disableSpinner
-              />
+              <Image src={smallPoster} disableSpinner />
             </div>
             <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
+              <Typography variant="h3" style={{marginBottom: "30px"}}>
                 <Link
+                  style={{ color: '#2f2f2f' }}
                   onClick={this.clickHandlerGetFilmName}
                   to={`/films/${title}`}
                 >
                   {title}
                 </Link>
               </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
-                Lizards are a widespread group of squamate reptiles, with over
-                6,000 species, ranging across all continents except Antarctica
-              </Typography>
+
+              <div className="card_content-paper-layout">
+                <Paper elevation={3}>
+                  <Typography variant="h5" color="primary" align="center">
+                    Release
+                  </Typography>
+                  <Typography variant="h6" align="center">
+                    {release}
+                  </Typography>
+                </Paper>
+                <Paper elevation={3}>
+                  <Typography variant="h5" color="primary" align="center">
+                    Director
+                  </Typography>
+                  <Typography variant="h6" align="center">
+                    {director}
+                  </Typography>
+                </Paper>
+                <Paper elevation={3}>
+                  <Typography variant="h5" color="primary" align="center">
+                    Duration
+                  </Typography>
+                  <Typography variant="h6" align="center">
+                    {duration} M
+                  </Typography>
+                </Paper>
+                <Paper elevation={3}>
+                  <Typography variant="h5" color="primary" align="center">
+                    Gross
+                  </Typography>
+                  <Typography variant="h6" align="center">
+                    {gross}
+                  </Typography>
+                </Paper>
+                <Paper elevation={3}>
+                  <Typography variant="h5" color="primary" align="center">
+                    Rating
+                  </Typography>
+                  <Typography variant="h6" align="center">
+                    {topRating}
+                  </Typography>
+                </Paper>
+              </div>
+
+              <ul className="card_stars-layout">{starsParse(stars)}</ul>
+
+              <Typography variant="body1">{description}</Typography>
               <CardActions>
                 {categoryParse(categories, this.clickHandlerCategoryChoose)}
               </CardActions>
             </CardContent>
-          </CardActionArea>
+          </div>
         </CardStyle>
       </Container>
     );

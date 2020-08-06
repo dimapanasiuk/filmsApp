@@ -1,13 +1,14 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
+import { Button, Avatar, Typography } from '@material-ui/core';
 
 export let starsParse = (arr) => {
   return arr.map((i) => (
-    <span to={`/categories/${i}`} key={uuidv4()}>
-      {i}
-    </span>
+    <li key={uuidv4()}>
+      <Avatar to={`/categories/${i}`} src="/" alt={i} size='50px'/>
+      <Typography variant="h6">{i}</Typography>
+    </li>
   ));
 };
 
@@ -18,7 +19,6 @@ export let categoryParse = (arr, onClickHandler) => {
       component={Link}
       to={`/categories/${i}`}
       onClick={onClickHandler}
-      size="small"
       color="primary"
     >
       {i}

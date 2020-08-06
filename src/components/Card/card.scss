@@ -1,13 +1,55 @@
+
+.card_content {
+  display: flex;
+
+  .MuiPaper-elevation3 {
+    padding: 10px;
+    margin-right: 10px;
+  }
+
+  .card_content-paper-layout {
+    display: flex;
+    flex-wrap: wrap;
+
+    div {
+      margin-bottom: 10px;
+    }
+  }
+}
+
 .card_img-container {
+  height: 100%;
+
   div {
-    width: 180px;
+    width: 300px;
+    height: 100%;
     padding: 0 !important;
     position: inherit !important;
   }
 
   img {
-    width: 180px ;
-    height: auto;
+    width: 100%;
+    height: auto !important;
     position: relative !important;
   }
+}
+
+.card_stars-layout {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px 0;
+
+  li {
+    margin-right: 20px;
+
+    div {
+      margin: auto;
+    }
+  }
+
+}
+
+.MuiAvatar-colorDefault	 {
+  background-color: #aab7ff !important;
 }
