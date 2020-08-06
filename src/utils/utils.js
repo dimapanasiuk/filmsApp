@@ -6,7 +6,7 @@ import { Button, Avatar, Typography } from '@material-ui/core';
 export let starsParse = (arr) => {
   return arr.map((i) => (
     <li key={uuidv4()}>
-      <Avatar to={`/categories/${i}`} src="/" alt={i} size='50px'/>
+      <Avatar to={`/categories/${i}`} src="/" alt={i} size="50px" />
       <Typography variant="h6">{i}</Typography>
     </li>
   ));

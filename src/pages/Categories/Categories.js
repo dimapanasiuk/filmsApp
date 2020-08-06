@@ -54,7 +54,7 @@ class Categories extends React.Component {
   };
 
   resetPagination = () => {
-    this.setState({currentPage: 1});
+    this.setState({ currentPage: 1 });
   };
 
   render() {
@@ -82,7 +82,8 @@ class Categories extends React.Component {
           {(() => {
             if (pages > 1)
               return (
-                <Pagination className='pagination'
+                <Pagination
+                  className="pagination"
                   count={pages}
                   page={currentPage}
                   onChange={this.handleChangePage}

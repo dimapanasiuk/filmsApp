@@ -33,7 +33,6 @@ class Card extends React.Component {
 
   render() {
     const {
-      id,
       title,
       release,
       categories,
@@ -53,7 +52,7 @@ class Card extends React.Component {
               <Image src={smallPoster} disableSpinner />
             </div>
             <CardContent>
-              <Typography variant="h3" style={{marginBottom: "30px"}}>
+              <Typography variant="h3" style={{ marginBottom: '30px' }}>
                 <Link
                   style={{ color: '#2f2f2f' }}
                   onClick={this.clickHandlerGetFilmName}
