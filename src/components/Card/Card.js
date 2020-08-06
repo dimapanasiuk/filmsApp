@@ -7,6 +7,8 @@ import { clickOnFilm } from '../../redux/filmData/filmDataActions';
 import { chooseCategory } from '../../redux/categoryData/categoryDataActions';
 import { starsParse, categoryParse } from '../../utils/utils';
 
+import Image from 'material-ui-image';
+
 import './card.scss';
 
 import {
@@ -15,7 +17,6 @@ import {
   CardActionArea,
   CardActions,
   CardContent,
-  CardMedia,
   Typography,
 } from '@material-ui/core';
 
@@ -51,14 +52,12 @@ class Card extends React.Component {
           <CardActionArea
             style={{ display: 'flex', justifyContent: 'flex-start' }}
           >
-            <CardMedia
-              style={{ height: '100%', width: 'auto' }}
-              component="img"
-              alt="Contemplative Reptile"
-              height="140"
-              image={smallPoster}
-              title="Contemplative Reptile"
-            />
+            <div className="card_img-container">
+              <Image
+                src={smallPoster}
+                disableSpinner
+              />
+            </div>
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
                 <Link
