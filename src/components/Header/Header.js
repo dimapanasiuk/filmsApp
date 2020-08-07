@@ -19,11 +19,20 @@ import Login from '../Login/Login';
 import './header.scss';
 
 const Header = ({ dispatch, films, category }) => {
-  let resetChooseCategory = () => {
-    dispatch(chooseCategory(''));
+  let checkProperty = () => {
+    if (localStorage.hasOwnProperty('loginData')) {
+      setOpen(false);
+    } else {
+      setOpen(true);
+    }
   };
 
-  const [currentCategory, setCurrentCategory] = React.useState('');
+  let resetChooseCategory = () => {
+    dispatch(chooseCategory(''));
+    checkProperty();
+  };
+
+  // const [currentCategory, setCurrentCategory] = React.useState('');
   const [value, setValue] = React.useState(0);
   const [open, setOpen] = React.useState(false);
 
@@ -32,11 +41,12 @@ const Header = ({ dispatch, films, category }) => {
   };
 
   const handleClose = () => {
-    setOpen(false);
+    checkProperty();
   };
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    setOpen(false);
   };
 
   let handleChangeReset = () => {
@@ -85,9 +95,6 @@ const Header = ({ dispatch, films, category }) => {
                   <DialogContent>
                     <Login />
                   </DialogContent>
-                  <Button onClick={handleClose} color="primary">
-                    Close
-                  </Button>
                 </Dialog>
               </li>
             </ul>
