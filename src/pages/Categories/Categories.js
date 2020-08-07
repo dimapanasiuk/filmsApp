@@ -4,7 +4,7 @@ import { func, arrayOf, object, string } from 'prop-types';
 
 import NavBar from '../../components/NavBar/NavBar';
 import Card from '../../components/Card/Card';
-import { showFilms } from '../../utils/utils';
+import { showFilms, scrollToTop } from '../../utils/utils';
 
 import Pagination from '@material-ui/lab/Pagination';
 
@@ -62,10 +62,10 @@ class Categories extends React.Component {
     const { currentPage } = this.state;
 
     const categoryFilms = this.searchMovieByKeyword(categoryChoose, films);
-
     const pages = Math.floor(categoryFilms.length / 10 - 1);
-
     const content = showFilms(categoryFilms, currentPage - 1);
+
+    scrollToTop();
 
     return (
       <div className="categories">

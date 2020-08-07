@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Card from '../../components/Card/Card';
 import { array } from 'prop-types';
 
-import { showFilms } from '../../utils/utils';
+import { showFilms, scrollToTop } from '../../utils/utils';
 
 import Pagination from '@material-ui/lab/Pagination';
 
@@ -33,6 +33,8 @@ const Home = ({ films }) => {
       topRating={i.topRating}
     />
   ));
+
+  scrollToTop();
 
   return (
     <>

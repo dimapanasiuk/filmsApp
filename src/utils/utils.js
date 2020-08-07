@@ -3,6 +3,10 @@ import { v4 as uuidv4 } from 'uuid';
 import { Link } from 'react-router-dom';
 import { Button, Avatar, Typography } from '@material-ui/core';
 
+export let scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
 export let starsParse = (arr) => {
   return arr.map((i) => (
     <li key={uuidv4()}>

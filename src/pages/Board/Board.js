@@ -8,7 +8,6 @@ import Home from '../Home/Home';
 import AboutFilm from '../AboutFilm/AboutFilm';
 import NotFound from '../NotFound/NotFound';
 
-
 class Board extends React.Component {
   state = {
     films: [],
@@ -30,7 +29,6 @@ class Board extends React.Component {
 
   render() {
     const { films } = this.state;
-
     return (
       <div className="main-content">
         <Header films={films} />

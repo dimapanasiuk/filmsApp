@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { arrayOf, object, string } from 'prop-types';
 
 import Card from '../../components/Card/Card';
-import { showFilms } from '../../utils/utils';
+import { showFilms, scrollToTop } from '../../utils/utils';
 
 import Pagination from '@material-ui/lab/Pagination';
 
@@ -51,6 +51,8 @@ class Search extends React.Component {
     const content = this.searchMovieByKeyword(searchData, films);
     const pages = Math.floor(content.length / 10 - 1);
     const currentContent = showFilms(content, currentPage - 1);
+
+    scrollToTop();
 
     return (
       <div className="search-wrapper">
