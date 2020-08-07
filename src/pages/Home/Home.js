@@ -37,7 +37,8 @@ const Home = ({ films }) => {
   return (
     <>
       <div className="home-wrapper">{filmsHtml}</div>
-      <Pagination className="pagination"
+      <Pagination
+        className="pagination"
         count={Math.floor(films.length / 10 - 1)}
         page={currentPage}
         onChange={handleChangePage}

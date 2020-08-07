@@ -92,7 +92,7 @@ class Card extends React.Component {
                     Gross
                   </Typography>
                   <Typography variant="h6" align="center">
-                    {gross}
+                    {gross || '---'}
                   </Typography>
                 </Paper>
                 <Paper elevation={3}>
