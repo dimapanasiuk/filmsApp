@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { func, array } from 'prop-types';
+import { func, array, string } from 'prop-types';
 import {
   Button,
   Container,
@@ -18,11 +18,12 @@ import Login from '../Login/Login';
 
 import './header.scss';
 
-const Header = ({ dispatch, films }) => {
+const Header = ({ dispatch, films, category }) => {
   let resetChooseCategory = () => {
     dispatch(chooseCategory(''));
   };
 
+  const [currentCategory, setCurrentCategory] = React.useState('');
   const [value, setValue] = React.useState(0);
   const [open, setOpen] = React.useState(false);
 
@@ -41,6 +42,13 @@ const Header = ({ dispatch, films }) => {
   let handleChangeReset = () => {
     setValue('');
   };
+
+  // TODO: this functional for changing backlight in header
+  // it isn't work now, many rerenders
+  // if (category !== currentCategory) {
+  //   console.log('currentCategory', currentCategory);
+  //   console.log('category', category);
+  // }
 
   return (
     <header>
@@ -93,10 +101,11 @@ const Header = ({ dispatch, films }) => {
 Header.propTypes = {
   dispatch: func,
   films: array,
+  category: string,
 };
 
 const mapStateToProps = (state) => {
-  return state;
+  return { category: state.categoryDataReducer.category };
 };
 
 export default connect(mapStateToProps)(Header);
