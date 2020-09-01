@@ -72,6 +72,7 @@ const Header = ({ dispatch, films, category }) => {
             >
               <Tab value={0} label="Home" to="/" component={NavLink} />
               <Tab
+                disabled={true}
                 value={1}
                 label="Categories"
                 to="/categories"
