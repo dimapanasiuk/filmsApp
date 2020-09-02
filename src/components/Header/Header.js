@@ -19,7 +19,7 @@ import Login from '../Login/Login';
 import './header.scss';
 
 const Header = ({ dispatch, films, userData }) => {
-  const isVisible = userData.response !== undefined;
+  const isVisible = userData.loginData === '';
 
   const [value, setValue] = useState(0);
   const [open, setOpen] = useState(false);
@@ -72,9 +72,16 @@ const Header = ({ dispatch, films, userData }) => {
               />
             </Tabs>
             <ul className="main-header-right-block">
-              <li>
-                <Search films={films} foo={handleChangeReset} />
-              </li>
+              {(() => {
+                if (!isVisible) {
+                  return (
+                    <li>
+                      <Search films={films} foo={handleChangeReset} />
+                    </li>
+                  );
+                }
+              })()}
+
               <li>
                 <Button
                   onClick={handleClickOpen}

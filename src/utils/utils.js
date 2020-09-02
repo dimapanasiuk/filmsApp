@@ -42,3 +42,12 @@ export let isCheckLoginInLocalStorage = () => {
   }
   return false;
 };
+
+export let isJson = (str) => {
+  try {
+    JSON.parse(str);
+  } catch (e) {
+    return false;
+  }
+  return true;
+};
