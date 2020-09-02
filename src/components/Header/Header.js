@@ -18,9 +18,10 @@ import Login from '../Login/Login';
 
 import './header.scss';
 
-const Header = ({ dispatch, films, category }) => {
+const Header = ({ dispatch, films }) => {
+  //category
   let checkProperty = () => {
-    if (localStorage.hasOwnProperty('loginData')) {
+    if (localStorage.loginData !== undefined) {
       setOpen(false);
     } else {
       setOpen(true);

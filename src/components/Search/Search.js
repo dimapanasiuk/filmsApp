@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { func, object } from 'prop-types';
+import { func, array } from 'prop-types';
 
 import { searchFilm } from '../../redux/searchData/searchDataActions';
 
@@ -75,7 +75,7 @@ class Search extends React.Component {
 
 Search.propTypes = {
   dispatch: func,
-  films: object,
+  films: array,
   foo: func,
 };
 
