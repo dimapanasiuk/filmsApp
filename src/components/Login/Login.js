@@ -37,6 +37,8 @@ let Login = ({ clickOnLogOut, clickOnLogin }) => {
   };
 
   let loginContent = (data) => {
+    console.log('loginContent', data);
+
     let cssLogIn;
     let cssLogOut;
     cssLogIn = data ? 'none' : 'block';

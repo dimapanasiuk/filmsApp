@@ -71,32 +71,32 @@ const Header = ({ dispatch, films, userData }) => {
                 onClick={resetChooseCategory}
               />
             </Tabs>
-            <ul className="main-header-right-block">
-              {(() => {
-                if (!isVisible) {
-                  return (
+
+            {(() => {
+              if (!isVisible) {
+                return (
+                  <ul className="main-header-right-block">
                     <li>
                       <Search films={films} foo={handleChangeReset} />
                     </li>
-                  );
-                }
-              })()}
-
-              <li>
-                <Button
-                  onClick={handleClickOpen}
-                  color="primary"
-                  variant="outlined"
-                >
-                  Login
-                </Button>
-                <Dialog open={open} onClose={handleClose}>
-                  <DialogContent>
-                    <Login />
-                  </DialogContent>
-                </Dialog>
-              </li>
-            </ul>
+                    <li>
+                      <Button
+                        onClick={handleClickOpen}
+                        color="primary"
+                        variant="outlined"
+                      >
+                        Login
+                      </Button>
+                      <Dialog open={open} onClose={handleClose}>
+                        <DialogContent>
+                          <Login />
+                        </DialogContent>
+                      </Dialog>
+                    </li>
+                  </ul>
+                );
+              }
+            })()}
           </nav>
         </Container>
       </Paper>
