@@ -8,7 +8,6 @@ import './login.scss';
 
 let Login = () => {
   const [userData, setUserData] = useState('');
-
   useEffect(() => {
     const store = localStorage;
     if (store.response !== undefined) {
@@ -39,7 +38,6 @@ let Login = () => {
       name = userData.profileObj.name;
       imgUrl = userData.profileObj.imageUrl;
     }
-
     return (
       <>
         <div style={{ display: cssLogIn, textAlign: 'center' }}>

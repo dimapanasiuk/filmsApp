@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { func, array, string } from 'prop-types';
@@ -19,30 +19,19 @@ import Login from '../Login/Login';
 import './header.scss';
 
 const Header = ({ dispatch, films }) => {
-  //category
-  let checkProperty = () => {
-    if (localStorage.loginData !== undefined) {
-      setOpen(false);
-    } else {
-      setOpen(true);
-    }
-  };
+  const [value, setValue] = useState(0);
+  const [open, setOpen] = useState(false);
 
   let resetChooseCategory = () => {
     dispatch(chooseCategory(''));
-    checkProperty();
   };
-
-  // const [currentCategory, setCurrentCategory] = React.useState('');
-  const [value, setValue] = React.useState(0);
-  const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
 
   const handleClose = () => {
-    checkProperty();
+    setOpen(false);
   };
 
   const handleChange = (event, newValue) => {
@@ -51,15 +40,8 @@ const Header = ({ dispatch, films }) => {
   };
 
   let handleChangeReset = () => {
-    setValue('');
+    console.log(test);
   };
-
-  // TODO: this functional for changing backlight in header
-  // it isn't work now, many rerenders
-  // if (category !== currentCategory) {
-  //   console.log('currentCategory', currentCategory);
-  //   console.log('category', category);
-  // }
 
   return (
     <header>
