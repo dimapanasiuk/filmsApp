@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Card from '../../components/Card/Card';
 import { array } from 'prop-types';
+// import Skeleton from 'react-loading-skeleton';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 import { showFilms, scrollToTop } from '../../utils/utils';
 
@@ -33,6 +35,31 @@ const Home = ({ films }) => {
       topRating={i.topRating}
     />
   ));
+
+  if (currentContent.length === 0) {
+    filmsHtml = (
+      <SkeletonTheme color="#d4d4d4" highlightColor="#c1c1c1">
+        <p style={{padding: '0 15px 10px 15px'}}>
+          <Skeleton  height={300} />
+        </p>
+        <p style={{padding: '0 15px 10px 15px'}}>
+          <Skeleton  height={300} />
+        </p>
+        <p style={{padding: '0 15px 10px 15px'}}>
+          <Skeleton  height={300} />
+        </p>
+        <p style={{padding: '0 15px 10px 15px'}}>
+          <Skeleton  height={300} />
+        </p>
+        <p style={{padding: '0 15px 10px 15px'}}>
+          <Skeleton  height={300} />
+        </p>
+        <p style={{padding: '0 15px 10px 15px'}}>
+          <Skeleton  height={300} />
+        </p>
+      </SkeletonTheme>
+    );
+  }
 
   scrollToTop();
 
