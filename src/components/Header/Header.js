@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { func, array, string } from 'prop-types';
+import { func, array, string, any } from 'prop-types';
 import {
   Button,
   Container,
@@ -18,7 +18,9 @@ import Login from '../Login/Login';
 
 import './header.scss';
 
-const Header = ({ dispatch, films }) => {
+const Header = ({ dispatch, films, userData }) => {
+  console.log('userData form redux in header', userData);
+
   const [value, setValue] = useState(0);
   const [open, setOpen] = useState(false);
 
@@ -93,10 +95,14 @@ Header.propTypes = {
   dispatch: func,
   films: array,
   category: string,
+  userData: any,
 };
 
 const mapStateToProps = (state) => {
-  return { category: state.categoryDataReducer.category };
+  return {
+    category: state.categoryDataReducer.category,
+    userData: state.loginDataReducer,
+  };
 };
 
 export default connect(mapStateToProps)(Header);

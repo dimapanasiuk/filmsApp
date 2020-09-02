@@ -34,3 +34,11 @@ export let showFilms = (arr, page) => {
   let currentPage = page * 10;
   return arr.slice(currentPage, currentPage + 10);
 };
+
+export let isCheckLoginInLocalStorage = () => {
+  const store = localStorage;
+  if (store.response !== undefined) {
+    return true;
+  }
+  return false;
+};

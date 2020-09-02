@@ -1,27 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
+import { func } from 'prop-types';
+import { connect } from 'react-redux';
 
+import {
+  clickOnLogin,
+  clickOnLogOut,
+} from '../../redux/loginData/loginDataAction';
 import Image from 'material-ui-image';
 import { Typography } from '@material-ui/core';
 
 import './login.scss';
 
-let Login = () => {
+import { isCheckLoginInLocalStorage } from '../../utils/utils';
+
+let Login = ({ clickOnLogOut, clickOnLogin }) => {
   const [userData, setUserData] = useState('');
+
   useEffect(() => {
     const store = localStorage;
-    if (store.response !== undefined) {
+    if (isCheckLoginInLocalStorage()) {
       setUserData(JSON.parse(store.response));
     }
   }, []);
 
   const responseGoogle = (response) => {
     setUserData(response);
+    clickOnLogin(response);
     localStorage.setItem('response', JSON.stringify(response));
   };
 
   const logout = () => {
     setUserData('');
+    clickOnLogOut('');
     localStorage.clear();
   };
 
@@ -87,4 +98,16 @@ let Login = () => {
   return <div className="login">{loginContent(userData)}</div>;
 };
 
-export default Login;
+Login.propTypes = {
+  clickOnLogin: func,
+  clickOnLogOut: func,
+};
+
+const mapDispatchToProps = {
+  clickOnLogin,
+  clickOnLogOut,
+};
+
+const mapStateToProps = (state) => ({ loginData: state.loginDataReducer });
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
