@@ -19,7 +19,7 @@ import Login from '../Login/Login';
 import './header.scss';
 
 const Header = ({ dispatch, films, userData }) => {
-  console.log('userData form redux in header', userData);
+  const isVisible = userData.response !== undefined;
 
   const [value, setValue] = useState(0);
   const [open, setOpen] = useState(false);
@@ -55,9 +55,15 @@ const Header = ({ dispatch, films, userData }) => {
               value={value}
               indicatorColor="primary"
             >
-              <Tab value={0} label="Home" to="/" component={NavLink} />
               <Tab
-                disabled={true}
+                value={0}
+                disabled={isVisible}
+                label="Home"
+                to="/"
+                component={NavLink}
+              />
+              <Tab
+                disabled={isVisible}
                 value={1}
                 label="Categories"
                 to="/categories"

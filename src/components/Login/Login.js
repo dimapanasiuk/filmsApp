@@ -51,13 +51,14 @@ let Login = ({ clickOnLogOut, clickOnLogin }) => {
     }
     return (
       <>
-        <div style={{ display: cssLogIn, textAlign: 'center' }}>
+        <div className="login-content" style={{ display: cssLogIn }}>
           <Typography
             variant="h5"
             gutterBottom
-            style={{ maxWidth: '300px', marginBottom: '40px' }}
+            style={{ maxWidth: '500px', marginBottom: '40px' }}
           >
-            Please login to make the {<b>category</b>} section active
+            Please login to make the section active please log in via
+            {<b> google account</b>} to see the films app
           </Typography>
           <GoogleLogin
             clientId="218192214311-8j7mfaiej5hmcvtojt7n6u2q2tjhl675.apps.googleusercontent.com"

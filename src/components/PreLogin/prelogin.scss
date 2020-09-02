@@ -1,0 +1,29 @@
+.prelogin-containter {
+  z-index: 99999999999999;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  margin-top: 0;
+  overflow: hidden;
+
+  .prelogin-content {
+    position: relative;
+    width: 100%;
+    height: 80%;
+    top: 50%;
+    background: #40566d96;
+  }
+
+  .login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 40px;
+  }
+}
+
+
+
+::-webkit-scrollbar {
+  display: none;
+}

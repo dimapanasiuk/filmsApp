@@ -7,17 +7,12 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
 
-  div {
-    padding: 0 !important;
-    position: inherit !important;
-
-    img {
-      position: relative !important;
-    }
-  }
-
-  button {
-    padding: 2px !important;
-  }
+.login-content {
+  background-color: #4791db;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  padding: 20px;
+  border-radius: 4px;
 }
