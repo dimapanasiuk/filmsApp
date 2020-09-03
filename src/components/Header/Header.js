@@ -5,6 +5,7 @@ import { func, array, string, any } from 'prop-types';
 
 import Brightness3Icon from '@material-ui/icons/Brightness3';
 import WbSunnyIcon from '@material-ui/icons/WbSunny';
+import MenuIcon from '@material-ui/icons/Menu';
 import {
   Switch,
   Button,
@@ -13,6 +14,7 @@ import {
   Tabs,
   Tab,
   Dialog,
+  IconButton,
   DialogContent,
 } from '@material-ui/core';
 
@@ -52,9 +54,19 @@ const Header = ({ dispatch, films, userData, theme }) => {
     theme(isSwitch);
   };
 
+  const openHeaderHeader = () => {
+    const content = document.querySelector('.header-content');
+    content.classList.toggle('open-content');
+  };
+
   return (
     <header>
-      <Paper>
+      <div className="mob-menu">
+        <IconButton onClick={openHeaderHeader}>
+          <MenuIcon style={{ color: 'white' }} fontSize="large" />
+        </IconButton>
+      </div>
+      <Paper className="header-content">
         <Container maxWidth="xl" className="header-layout">
           <nav className="header-navigation">
             <Tabs
@@ -78,6 +90,7 @@ const Header = ({ dispatch, films, userData, theme }) => {
                 onClick={resetChooseCategory}
               />
             </Tabs>
+
             {(() => {
               if (!isVisible) {
                 return (

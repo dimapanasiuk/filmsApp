@@ -9,7 +9,6 @@ header {
     align-items: center;
     justify-content: space-between;
   }
-
 }
 
 .main-header-right-block {
@@ -32,4 +31,53 @@ header {
 
 .MuiPaper-rounded {
   border-radius: 0 !important;
+}
+
+.mob-menu {
+  display: none;
+}
+
+
+@media only screen and (max-device-width:900px) {
+  .mob-menu {
+    display: block;
+    text-align: right;
+    background-color: #2196f3;
+  }
+
+  .header-content {
+    display: none;
+  }
+
+  .header-navigation_category {
+    display: none !important;
+  }
+
+  .open-content {
+    display: block;
+  }
+
+  .MuiTabs-flexContainer,
+  .main-header-right-block {
+    flex-direction: column;
+  }
+
+  header .header-navigation {
+    align-items: flex-end;
+    justify-content: flex-end;
+    flex-direction: column;
+  }
+
+  .main-header-right-block {
+    align-items: flex-end;
+  }
+
+  .main-header-right-block :nth-child(3) {
+    order: 2;
+  }
+
+  .main-header-right-block :nth-child(2) {
+    order: 3;
+  }
+
 }

@@ -1,6 +1,7 @@
 .card_content {
   display: flex;
   align-items: center;
+  justify-content: center;
 
   .MuiPaper-elevation3 {
     padding: 10px;
@@ -10,6 +11,7 @@
   .card_content-paper-layout {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 
     div {
       margin-bottom: 10px;
@@ -37,6 +39,7 @@
 .card_stars-layout {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   padding: 10px 0;
 
@@ -47,7 +50,6 @@
       margin: auto;
     }
   }
-
 }
 
 .MuiAvatar-colorDefault {
@@ -57,4 +59,27 @@
 .text-article {
   color: #2196f3;
   text-shadow: 2px 2px #80808091;
+}
+
+.text-article:hover {
+  color: #45a8f7;
+}
+
+.MuiCardActions-root {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media only screen and (max-device-width:600px) {
+  .card_content {
+    flex-wrap: wrap;
+  }
+
+  .MuiTypography-h3 {
+    text-align: center;
+  }
+
+  .MuiCardActions-root {
+    margin: 0;
+  }
 }

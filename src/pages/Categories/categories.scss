@@ -35,3 +35,9 @@ $base-navbar-width: 13%;
 .pagination {
   padding-bottom: 40px;
 }
+
+@media only screen and (max-device-width:800px) {
+  .categories-navbar {
+    width: 20%;
+  }
+}
