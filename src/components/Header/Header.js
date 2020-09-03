@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { func, array, string, any } from 'prop-types';
+
+import Brightness3Icon from '@material-ui/icons/Brightness3';
+import WbSunnyIcon from '@material-ui/icons/WbSunny';
 import {
+  Switch,
   Button,
   Container,
   Paper,
@@ -18,8 +22,10 @@ import Login from '../Login/Login';
 
 import './header.scss';
 
-const Header = ({ dispatch, films, userData }) => {
+const Header = ({ dispatch, films, userData, theme }) => {
   const isVisible = userData.loginData === '';
+
+  let isSwitch = false;
 
   const [value, setValue] = useState(0);
   const [open, setOpen] = useState(false);
@@ -39,6 +45,11 @@ const Header = ({ dispatch, films, userData }) => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
     setOpen(false);
+  };
+
+  const handleChangeSwitch = () => {
+    isSwitch = !isSwitch;
+    theme(isSwitch);
   };
 
   return (
@@ -67,13 +78,22 @@ const Header = ({ dispatch, films, userData }) => {
                 onClick={resetChooseCategory}
               />
             </Tabs>
-
             {(() => {
               if (!isVisible) {
                 return (
                   <ul className="main-header-right-block">
+                    <li className="switcher">
+                      <WbSunnyIcon />
+                      <Switch
+                        onChange={handleChangeSwitch}
+                        color="primary"
+                        name="checkedB"
+                        inputProps={{ 'aria-label': 'primary checkbox' }}
+                      />
+                      <Brightness3Icon />
+                    </li>
                     <li>
-                      <Search films={films}/>
+                      <Search films={films} />
                     </li>
                     <li>
                       <Button
@@ -105,6 +125,7 @@ Header.propTypes = {
   films: array,
   category: string,
   userData: any,
+  theme: func,
 };
 
 const mapStateToProps = (state) => {

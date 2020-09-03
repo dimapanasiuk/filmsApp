@@ -54,7 +54,7 @@ class Card extends React.Component {
             <CardContent>
               <Typography variant="h3" style={{ marginBottom: '30px' }}>
                 <Link
-                  style={{ color: '#2f2f2f' }}
+                  className="text-article"
                   onClick={this.clickHandlerGetFilmName}
                   to={`/films/${title}`}
                 >
@@ -104,9 +104,7 @@ class Card extends React.Component {
                   </Typography>
                 </Paper>
               </div>
-
               <ul className="card_stars-layout">{starsParse(stars)}</ul>
-
               <Typography variant="body1">{description}</Typography>
               <CardActions>
                 {categoryParse(categories, this.clickHandlerCategoryChoose)}

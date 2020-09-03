@@ -10,11 +10,14 @@ import Home from '../Home/Home';
 import AboutFilm from '../AboutFilm/AboutFilm';
 import NotFound from '../NotFound/NotFound';
 import PreLogin from '../../components/PreLogin/PreLogin';
-// import { isJson } from '../../utils/utils';
+
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
 
 class Board extends React.Component {
   state = {
     films: [],
+    themeSwitch: 'light',
   };
 
   componentDidMount = () => {
@@ -31,45 +34,68 @@ class Board extends React.Component {
     return null;
   };
 
+  theme = (e) => {
+    if (!e) {
+      this.setState({ themeSwitch: 'light' });
+    } else {
+      this.setState({ themeSwitch: 'dark' });
+    }
+  };
+
   render() {
+    const { films, themeSwitch } = this.state;
+
+    console.log('themeSwitch', themeSwitch);
+
     const { loginData } = this.props.userData;
     const isRender = loginData === '';
 
-    const { films } = this.state;
+    const outerTheme = createMuiTheme({
+      palette: {
+        type: themeSwitch,
+        primary: {
+          main: '#2196f3',
+        },
+      },
+    });
 
     return (
-      <div className="main-content">
-        {(() => {
-          if (isRender) {
-            return <PreLogin />;
-          }
-        })()}
+      <ThemeProvider theme={outerTheme}>
+        <Paper style={{ height: '100%' }}>
+          <div className="main-content">
+            {(() => {
+              if (isRender) {
+                return <PreLogin />;
+              }
+            })()}
 
-        <Header films={films} />
-        <Switch>
-          <Route exact path="/search">
-            <Search films={films} />
-          </Route>
+            <Header films={films} theme={this.theme} />
+            <Switch>
+              <Route exact path="/search">
+                <Search films={films} />
+              </Route>
 
-          <Route path="/categories">
-            <Categories films={films} />
-          </Route>
+              <Route path="/categories">
+                <Categories films={films} />
+              </Route>
 
-          <Route path="/categories/:category">
-            <Categories films={films} />
-          </Route>
+              <Route path="/categories/:category">
+                <Categories films={films} />
+              </Route>
 
-          <Route path="/films/:about">
-            <AboutFilm films={films} />
-          </Route>
+              <Route path="/films/:about">
+                <AboutFilm films={films} />
+              </Route>
 
-          <Route exact path="/">
-            <Home films={films} />
-          </Route>
+              <Route exact path="/">
+                <Home films={films} />
+              </Route>
 
-          <Route component={NotFound} />
-        </Switch>
-      </div>
+              <Route component={NotFound} />
+            </Switch>
+          </div>
+        </Paper>
+      </ThemeProvider>
     );
   }
 }

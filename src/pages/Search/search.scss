@@ -1,3 +1,10 @@
-.search-wrapper {
-  padding-top: 80px;
+html,
+body,
+#root {
+  min-height: 100%;
+
+  .search-wrapper {
+    height: 100%;
+    padding-top: 80px;
+  }
 }

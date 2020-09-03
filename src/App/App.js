@@ -3,8 +3,8 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import combineReducers from '../redux/reducers';
 
+import combineReducers from '../redux/reducers';
 import Board from '../pages/Board/Board';
 import './global-style.scss';
 
