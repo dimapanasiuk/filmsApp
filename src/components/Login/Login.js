@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
-import { func } from 'prop-types';
+import { func, any } from 'prop-types';
 import { connect } from 'react-redux';
 
 import {
@@ -14,7 +14,7 @@ import './login.scss';
 
 import { isCheckLoginInLocalStorage } from '../../utils/utils';
 
-let Login = ({ clickOnLogOut, clickOnLogin }) => {
+let Login = ({ clickOnLogOut, clickOnLogin, loginData }) => {
   const [userData, setUserData] = useState('');
 
   useEffect(() => {
@@ -36,13 +36,13 @@ let Login = ({ clickOnLogOut, clickOnLogin }) => {
     localStorage.clear();
   };
 
-  let loginContent = (data) => {
-    console.log('loginContent', data);
+  let loginContent = () => {
+    let isTrue = loginData.loginData !== '';
 
     let cssLogIn;
     let cssLogOut;
-    cssLogIn = data ? 'none' : 'block';
-    cssLogOut = data ? 'block' : 'none';
+    cssLogIn = isTrue ? 'none' : 'block';
+    cssLogOut = isTrue ? 'block' : 'none';
 
     let name = '';
     let imgUrl = '';
@@ -98,12 +98,13 @@ let Login = ({ clickOnLogOut, clickOnLogin }) => {
     );
   };
 
-  return <div className="login">{loginContent(userData)}</div>;
+  return <div className="login">{loginContent()}</div>;
 };
 
 Login.propTypes = {
   clickOnLogin: func,
   clickOnLogOut: func,
+  loginData: any,
 };
 
 const mapDispatchToProps = {

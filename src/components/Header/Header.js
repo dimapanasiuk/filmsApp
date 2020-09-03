@@ -41,10 +41,6 @@ const Header = ({ dispatch, films, userData }) => {
     setOpen(false);
   };
 
-  let handleChangeReset = () => {
-    console.log(test);
-  };
-
   return (
     <header>
       <Paper>
@@ -77,7 +73,7 @@ const Header = ({ dispatch, films, userData }) => {
                 return (
                   <ul className="main-header-right-block">
                     <li>
-                      <Search films={films} foo={handleChangeReset} />
+                      <Search films={films}/>
                     </li>
                     <li>
                       <Button
@@ -85,7 +81,7 @@ const Header = ({ dispatch, films, userData }) => {
                         color="primary"
                         variant="outlined"
                       >
-                        Login
+                        Profile
                       </Button>
                       <Dialog open={open} onClose={handleClose}>
                         <DialogContent>
