@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { chooseCategory } from '../../redux/categoryData/categoryDataActions';
 import { starsParse, categoryParse } from '../../utils/utils';
 
+import Typography from '@material-ui/core/Typography';
+
 import './aboutFilm.scss';
 
 class AboutFilm extends React.Component {
@@ -42,21 +44,41 @@ class AboutFilm extends React.Component {
         </div>
 
         <div className="about_content">
-          <h1>{filmName}</h1>
+          <Typography variant="h1" component="h2" gutterBottom>
+            <b>{filmName}</b>
+          </Typography>
+
           <div>
-            <h1>Duration{duration}</h1>
-            <h1>Rating {rating}</h1>
-            <h1>Director {director}</h1>
-            <h1>Release{releaseYear}</h1>
-            <h1>gross{gross}</h1>
-
-            <h3>stars</h3>
-            {starsParse(stars)}
-
-            <h3>categories</h3>
-            {categoryParse(categories, this.clickHandlerCategoryChoose)}
-
-            <p>{description}</p>
+            <Typography variant="h3" gutterBottom align="left">
+              <b>Duration</b> {duration}
+            </Typography>
+            <Typography variant="h4" gutterBottom>
+              <b>Rating</b> {rating}{' '}
+            </Typography>
+            <Typography variant="h5" gutterBottom>
+              <b>Director</b> {director}
+            </Typography>
+            <Typography variant="h6" gutterBottom>
+              <b>Release</b> {releaseYear}
+            </Typography>
+            <Typography variant="h6" gutterBottom>
+              <b>Gross</b> {gross}{' '}
+            </Typography>
+            <div className="stars-content">
+              <Typography variant="h4" gutterBottom>
+                <b>Stars</b>
+              </Typography>
+              <ul className="stars-content_items">{starsParse(stars)}</ul>
+            </div>
+            <div className="category-content">
+              <Typography variant="h5" gutterBottom>
+                <b>Category</b>
+              </Typography>
+              {categoryParse(categories, this.clickHandlerCategoryChoose)}
+            </div>
+            <Typography variant="body1" gutterBottom>
+              {description}
+            </Typography>
           </div>
         </div>
       </div>

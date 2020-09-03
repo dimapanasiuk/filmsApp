@@ -1,3 +1,14 @@
+html,
+body,
+#root,
+.about {
+  height: 100%;
+}
+
+.MuiPaper-root {
+  height: auto !important;
+}
+
 .about {
   display: flex;
   height: 100%;
@@ -5,7 +16,7 @@
 
   .about_pic {
     padding: 100px;
-    width: 50%;
+    width: 100%;
 
     img {
       height: 100%;
@@ -15,7 +26,41 @@
 
   .about_content {
     margin-top: 100px;
-    background-color: red;
   }
 
+  .text-article {
+    color: #2196f3;
+    text-shadow: 2px 2px #80808091;
+  }
+}
+
+.stars-content_items {
+  display: flex;
+
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-right: 20px;
+  }
+}
+
+.stars-content,
+.category-content {
+  margin: 20px 0;
+}
+
+@media only screen and (max-device-width:900px) {
+  .about {
+    flex-direction: column;
+
+    .about_pic {
+      padding: 59px 0 0 0;
+    }
+
+    .about_content {
+      padding: 0 10px 20px 20px;
+    }
+  }
 }
