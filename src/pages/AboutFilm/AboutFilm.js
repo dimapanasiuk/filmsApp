@@ -76,7 +76,7 @@ class AboutFilm extends React.Component {
               </Typography>
               {categoryParse(categories, this.clickHandlerCategoryChoose)}
             </div>
-            <Typography variant="body1" gutterBottom>
+            <Typography variant="body1" gutterBottom className='category-content_description'>
               {description}
             </Typography>
           </div>

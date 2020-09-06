@@ -16,7 +16,7 @@ body,
 
   .about_pic {
     padding: 100px;
-    width: 100%;
+    max-width: 50vw;
 
     img {
       height: 100%;
@@ -34,6 +34,10 @@ body,
   }
 }
 
+.category-content_description {
+  width: 80%;
+}
+
 .stars-content_items {
   display: flex;
 
@@ -49,6 +53,7 @@ body,
 .stars-content,
 .category-content {
   margin: 20px 0;
+  width: 80%;
 }
 
 @media only screen and (max-device-width:900px) {
