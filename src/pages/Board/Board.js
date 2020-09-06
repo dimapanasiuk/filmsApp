@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { any } from 'prop-types';
+import { any, bool, func } from 'prop-types';
 
 import Header from '../../components/Header/Header';
 import Categories from '../Categories/Categories';
@@ -17,7 +17,6 @@ import Paper from '@material-ui/core/Paper';
 class Board extends React.Component {
   state = {
     films: [],
-    themeSwitch: 'light',
   };
 
   componentDidMount = () => {
@@ -34,25 +33,15 @@ class Board extends React.Component {
     return null;
   };
 
-  theme = (e) => {
-    if (!e) {
-      this.setState({ themeSwitch: 'light' });
-    } else {
-      this.setState({ themeSwitch: 'dark' });
-    }
-  };
-
   render() {
-    const { films, themeSwitch } = this.state;
-
-    console.log('themeSwitch', themeSwitch);
-
+    const { films } = this.state;
+    const { isLightTheme } = this.props;
     const { loginData } = this.props.userData;
     const isRender = loginData === '';
 
     const outerTheme = createMuiTheme({
       palette: {
-        type: themeSwitch,
+        type: isLightTheme ? 'light' : 'dark',
         primary: {
           main: '#2196f3',
         },
@@ -69,7 +58,7 @@ class Board extends React.Component {
               }
             })()}
 
-            <Header films={films} theme={this.theme} />
+            <Header films={films} />
             <Switch>
               <Route exact path="/search">
                 <Search films={films} />
@@ -102,12 +91,13 @@ class Board extends React.Component {
 
 Board.propTypes = {
   userData: any,
+  isLightTheme: bool,
+  filmSwitcher: func,
 };
 
-const mapStateToProps = (state) => {
-  return {
-    userData: state.loginDataReducer,
-  };
-};
+const mapStateToProps = (state) => ({
+  userData: state.loginDataReducer,
+  isLightTheme: state.themeSwitcherReducer.isLightTheme,
+});
 
 export default connect(mapStateToProps)(Board);

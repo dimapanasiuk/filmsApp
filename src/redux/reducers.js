@@ -3,7 +3,7 @@ import filmsReducer from './getFilmsData/filmsReducer';
 import filmDataReducer from './filmData/filmDataReducer';
 import categoryDataReducer from './categoryData/categoryDataReducer';
 import searchDataReducer from './searchData/searchDataReducer';
-
+import themeSwitcherReducer from './themeSwitcher/themeSwitcherReducer';
 import loginDataReducer from './loginData/loginDataReducer';
 
 export default combineReducers({
@@ -12,4 +12,5 @@ export default combineReducers({
   categoryDataReducer,
   searchDataReducer,
   loginDataReducer,
+  themeSwitcherReducer,
 });

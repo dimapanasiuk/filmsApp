@@ -19,21 +19,20 @@ import {
 } from '@material-ui/core';
 
 import { chooseCategory } from '../../redux/categoryData/categoryDataActions';
+import { themeSwitcher } from '../../redux/themeSwitcher/themeSwitcherAction';
 import Search from '../Search/Search';
 import Login from '../Login/Login';
 
 import './header.scss';
 
-const Header = ({ dispatch, films, userData, theme }) => {
+const Header = ({ films, userData, chooseCategory, themeSwitcher }) => {
   const isVisible = userData.loginData === '';
-
-  let isSwitch = false;
 
   const [value, setValue] = useState(0);
   const [open, setOpen] = useState(false);
 
   let resetChooseCategory = () => {
-    dispatch(chooseCategory(''));
+    chooseCategory('');
   };
 
   const handleClickOpen = () => {
@@ -50,8 +49,7 @@ const Header = ({ dispatch, films, userData, theme }) => {
   };
 
   const handleChangeSwitch = () => {
-    isSwitch = !isSwitch;
-    theme(isSwitch);
+    themeSwitcher();
   };
 
   const openHeaderHeader = () => {
@@ -138,14 +136,18 @@ Header.propTypes = {
   films: array,
   category: string,
   userData: any,
-  theme: func,
+  chooseCategory: func,
+  themeSwitcher: func,
 };
 
-const mapStateToProps = (state) => {
-  return {
-    category: state.categoryDataReducer.category,
-    userData: state.loginDataReducer,
-  };
+const mapStateToProps = (state) => ({
+  category: state.categoryDataReducer.category,
+  userData: state.loginDataReducer,
+});
+
+const mapDispatchToProps = {
+  themeSwitcher: themeSwitcher,
+  chooseCategory: chooseCategory,
 };
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
