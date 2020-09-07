@@ -18,6 +18,7 @@ class NavBar extends React.Component {
     return arr.map((i) => {
       return (
         <Button
+          className="navbar-button"
           variant="contained"
           color="primary"
           key={uuid4()}
