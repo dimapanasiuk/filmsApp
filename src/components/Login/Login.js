@@ -59,7 +59,7 @@ let Login = ({ clickOnLogOut, clickOnLogin, loginData }) => {
             gutterBottom
             style={{ maxWidth: '500px', marginBottom: '40px' }}
           >
-            Please login to make the section active please log in via
+            Please log in to make the section active please log in via
             {<b> google account</b>} to see the films app
           </Typography>
           <GoogleLogin
