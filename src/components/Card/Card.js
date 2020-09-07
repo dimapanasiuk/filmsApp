@@ -49,7 +49,11 @@ class Card extends React.Component {
         <CardStyle>
           <div className="card_content">
             <div className="card_img-container">
-              <Image src={smallPoster} disableSpinner />
+              <Image
+                src={smallPoster}
+                disableSpinner
+                style={{ background: 'none' }}
+              />
             </div>
             <CardContent>
               <Typography variant="h3" style={{ marginBottom: '30px' }}>
