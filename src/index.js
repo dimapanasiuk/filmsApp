@@ -1,5 +1,13 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App/App";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App/App';
+import Favicon from 'react-favicon';
+import fav from './fav.ico';
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <>
+    <Favicon url={fav} />
+    <App />
+  </>,
+  document.getElementById('root')
+);
