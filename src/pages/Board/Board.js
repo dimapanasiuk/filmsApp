@@ -20,7 +20,7 @@ class Board extends React.Component {
   };
 
   componentDidMount = () => {
-    fetch('https://filmsapi.herokuapp.com/films').then((response) =>
+    fetch('https://filmsapi.herokuapp.com/film').then((response) =>
       response
         .json()
         .then((data) => {
